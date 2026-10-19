@@ -6,7 +6,6 @@ import { HomePage } from './pages/HomePage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { CompetitiveProgrammingPage } from './pages/CompetitiveProgrammingPage'
-import { ResumePage } from './pages/ResumePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import './styles.css'
 
@@ -20,7 +19,6 @@ const router = createBrowserRouter([
       { path: 'projects', element: <ProjectsPage /> },
       { path: 'projects/:slug', element: <ProjectDetailPage /> },
       { path: 'competitive-programming', element: <CompetitiveProgrammingPage /> },
-      { path: 'resume', element: <ResumePage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

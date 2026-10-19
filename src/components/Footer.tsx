@@ -13,7 +13,7 @@ export function Footer() {
         <div className="footer-links">
           <Link to="/projects">Projects</Link>
           <Link to="/competitive-programming">Competitive Programming</Link>
-          <Link to="/resume">Resume</Link>
+          <Link to="/#contact" preventScrollReset>Contact</Link>
           <a href={profile.github} target="_blank" rel="noreferrer"><Code2 size={15} /> GitHub <ArrowUpRight size={14} /></a>
         </div>
       </div>

@@ -1,0 +1,5 @@
+Tool: built-in imagegen
+Edit target: anya-christmas-hero.png
+Transparent background: true
+
+Use case: precise-object-edit. Edit target: supplied transparent illustration of Anya holding a laptop. Create the dizzy expression variant for an interactive website image swap. Change ONLY her facial expression: replace both green eye interiors with funny spiral eyes, add flushed cheeks and a small wobbly mouth. Preserve exactly the same character pose, silhouette, body, hair, clothing, laptop, ornaments, stars, linework, colors, proportions, canvas framing and alignment. Keep genuine transparent alpha background. Do not add a background, checkerboard or any other objects. Matching full image, no crop.

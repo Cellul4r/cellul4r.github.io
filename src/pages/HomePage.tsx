@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { AmbientBackground } from '../components/AmbientBackground'
 import { HeroIllustration } from '../components/HeroIllustration'
+import { ContactSection } from '../components/ContactSection'
 import { ProjectCard } from '../components/ProjectCard'
 import { SectionHeading } from '../components/SectionHeading'
 import { contests, profile, projects, technicalAreas } from '../data/portfolio'
@@ -31,7 +32,6 @@ export function HomePage() {
               <Link className="button button-quiet" to="/competitive-programming">Contest results</Link>
             </div>
             <div className="hero-links">
-              <Link to="/resume">View résumé <ArrowRight size={14} /></Link>
               <a href={profile.github} target="_blank" rel="noreferrer"><Code2 size={15} /> GitHub</a>
             </div>
           </motion.div>
@@ -114,6 +114,7 @@ export function HomePage() {
           </motion.div>
         </div>
       </section>
+      <ContactSection />
     </div>
   )
 }

@@ -6,6 +6,8 @@ export const profile = {
   headline: 'Software • Cloud • Networks • Competitive Programming',
   intro: 'I enjoy building software, understanding the infrastructure behind it, exploring computer networks, and solving challenging algorithmic problems.',
   github: 'https://github.com/Cellul4r',
+  email: 'theerada.siri24@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/theerada-siri',
 }
 
 export const projects: Project[] = [
