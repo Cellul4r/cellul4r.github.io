@@ -1,10 +1,13 @@
-import { ArrowUpRight, Code2, Mail, Network } from 'lucide-react'
+import { ArrowUpRight, Mail } from 'lucide-react'
+import githubLogo from '../assets/brands/github.svg'
+import linkedinLogo from '../assets/brands/linkedin.png'
 import { profile } from '../data/portfolio'
+import { ScrollReveal } from './ScrollReveal'
 
 export function ContactSection() {
   return (
     <section className="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div className="container contact-grid">
+      <ScrollReveal className="container contact-grid">
         <div className="contact-copy">
           <p className="eyebrow">Get in touch</p>
           <h2 id="contact-title">Let’s build<br /><em>something.</em></h2>
@@ -17,17 +20,17 @@ export function ContactSection() {
             <ArrowUpRight size={20} aria-hidden="true" />
           </a>
           <a href={profile.github} target="_blank" rel="noreferrer">
-            <Code2 size={22} aria-hidden="true" />
+            <img src={githubLogo} width={22} height={22} alt="" aria-hidden="true" />
             <span><small>Explore my code</small><strong>GitHub / Cellul4r</strong></span>
             <ArrowUpRight size={20} aria-hidden="true" />
           </a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">
-            <Network size={22} aria-hidden="true" />
+            <img src={linkedinLogo} width={22} height={22} alt="" aria-hidden="true" />
             <span><small>Let’s connect</small><strong>LinkedIn / Theerada Siri</strong></span>
             <ArrowUpRight size={20} aria-hidden="true" />
           </a>
         </address>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

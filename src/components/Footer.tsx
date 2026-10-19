@@ -1,6 +1,4 @@
-import { ArrowUpRight, Code2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { profile } from '../data/portfolio'
 
 export function Footer() {
   return (
@@ -14,12 +12,7 @@ export function Footer() {
           <Link to="/projects">Projects</Link>
           <Link to="/competitive-programming">Competitive Programming</Link>
           <Link to="/#contact" preventScrollReset>Contact</Link>
-          <a href={profile.github} target="_blank" rel="noreferrer"><Code2 size={15} /> GitHub <ArrowUpRight size={14} /></a>
         </div>
-      </div>
-      <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Theerada Siri</span>
-        <span>Software · Systems · Networks</span>
       </div>
     </footer>
   )

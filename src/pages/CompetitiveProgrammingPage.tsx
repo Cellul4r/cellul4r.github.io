@@ -28,7 +28,7 @@ export function CompetitiveProgrammingPage() {
         <div className="cp-section-head"><div><p className="eyebrow">ICPC Thailand</p><h2>Contest results</h2></div><Trophy size={36} /></div>
         <div className="contest-list">
           {contests.map((contest, index) => (
-            <motion.article className="contest-card" key={contest.year} initial={{ opacity: 0, x: index % 2 ? 45 : -45, rotate: index % 2 ? 1 : -1 }} whileInView={{ opacity: 1, x: 0, rotate: 0 }} whileHover={{ y: -6, rotate: index % 2 ? 1 : -1 }} viewport={{ once: true }} transition={{ duration: .5 }}>
+            <motion.article className="contest-card" key={contest.year} initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -6, rotate: index % 2 ? 1 : -1 }} viewport={{ once: true }} transition={{ duration: .5 }}>
               <div className="contest-year"><span>20</span><strong>{contest.year.slice(2)}</strong></div>
               <div className="contest-place"><p>{contest.placement}</p><h3>{contest.rank} <span>{contest.field}</span></h3></div>
               <div className="contest-venue"><span>Host venue</span><p>{contest.venue}</p></div>
