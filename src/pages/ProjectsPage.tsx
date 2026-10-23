@@ -1,10 +1,8 @@
 import { ArrowDownRight } from 'lucide-react'
 import { ProjectCard } from '../components/ProjectCard'
 import { projects } from '../data/portfolio'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function ProjectsPage() {
-  useDocumentTitle('Project Library')
   return (
     <div className="page">
       <header className="page-hero container">

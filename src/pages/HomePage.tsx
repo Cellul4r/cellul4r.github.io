@@ -7,11 +7,9 @@ import { ContactSection } from '../components/ContactSection'
 import { ProfileBranches } from '../components/ProfileBranches'
 import { ScrollReveal } from '../components/ScrollReveal'
 import { profile } from '../data/portfolio'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import theeradaProfile from '../assets/theerada-profile.webp'
 
 export function HomePage() {
-  useDocumentTitle('Website Portfolio')
   const reduceMotion = useReducedMotion()
 
   return (

@@ -3,12 +3,10 @@ import { motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { TechBadge } from '../components/TechBadge'
 import { projects } from '../data/portfolio'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
   const project = projects.find((item) => item.slug === slug)
-  useDocumentTitle(project?.title ?? 'Project not found')
   if (!project) return <div className="container empty-state"><p className="eyebrow">404</p><h1>Project not found.</h1><Link className="button button-primary" to="/projects">Back to projects</Link></div>
 
   return (
