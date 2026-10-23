@@ -20,8 +20,22 @@ export interface Project {
 
 export interface Contest {
   year: string
+  title: string
   placement: string
   rank: string
   field: string
   venue: string
+  teamName?: string
+  organizerAnnouncementUrl?: string
+  photos?: ContestPhoto[]
+}
+
+export interface ContestPhoto {
+  src: string
+  previewSrc: string
+  thumbnailSrc: string
+  width: number
+  height: number
+  alt: string
+  caption: string
 }

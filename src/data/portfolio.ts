@@ -1,4 +1,16 @@
 import type { Contest, Project } from '../types/portfolio'
+import awardPhoto from '../assets/icpc/2025/award.webp'
+import awardPreview from '../assets/icpc/2025/award-preview.webp'
+import awardThumbnail from '../assets/icpc/2025/award-thumb.webp'
+import teamPhoto from '../assets/icpc/2025/team.webp'
+import teamPreview from '../assets/icpc/2025/team-preview.webp'
+import teamThumbnail from '../assets/icpc/2025/team-thumb.webp'
+import warmUpPhoto from '../assets/icpc/2025/warm-up.webp'
+import warmUpPreview from '../assets/icpc/2025/warm-up-preview.webp'
+import warmUpThumbnail from '../assets/icpc/2025/warm-up-thumb.webp'
+import scoreboardPhoto from '../assets/icpc/2025/scoreboard.webp'
+import scoreboardPreview from '../assets/icpc/2025/scoreboard-preview.webp'
+import scoreboardThumbnail from '../assets/icpc/2025/scoreboard-thumb.webp'
 
 export const profile = {
   name: 'Theerada Siri',
@@ -78,6 +90,7 @@ export const projects: Project[] = [
 export const contests: Contest[] = [
   {
     year: '2026',
+    title: 'ICPC Thailand National Contest 2026',
     placement: 'First Runner-Up',
     rank: '2nd',
     field: 'of 61 teams',
@@ -85,10 +98,39 @@ export const contests: Contest[] = [
   },
   {
     year: '2025',
+    title: 'ICPC Thailand National Contest 2025',
     placement: 'Second Runner-Up',
     rank: '3rd',
     field: 'of 74 teams',
-    venue: "School of Science, King Mongkut's Institute of Technology Ladkrabang",
+    venue: "School of Science, King Mongkut's Institute of Technology Ladkrabang (KMITL), Bangkok",
+    teamName: 'UndefinedAC + HomuraAkemi + Intercontinental Ballistic Missile CMU',
+    organizerAnnouncementUrl: 'https://www.facebook.com/share/p/19dfi5mzaz/',
+    photos: [
+      {
+        src: awardPhoto, previewSrc: awardPreview, thumbnailSrc: awardThumbnail,
+        width: 1920, height: 1280,
+        caption: 'Receiving the Second Runner-Up award',
+        alt: 'The CMU team on stage holding the Second Runner-Up award at ICPC Thailand National Contest 2025.',
+      },
+      {
+        src: teamPhoto, previewSrc: teamPreview, thumbnailSrc: teamThumbnail,
+        width: 1920, height: 1280,
+        caption: 'Team photo at KMITL',
+        alt: 'The CMU team and accompanying staff posing in front of the ICPC Thailand National Contest 2025 backdrop at KMITL.',
+      },
+      {
+        src: warmUpPhoto, previewSrc: warmUpPreview, thumbnailSrc: warmUpThumbnail,
+        width: 1920, height: 1440,
+        caption: 'During the contest warm-up',
+        alt: 'Three teammates sitting together at their contest workstation during the warm-up.',
+      },
+      {
+        src: scoreboardPhoto, previewSrc: scoreboardPreview, thumbnailSrc: scoreboardThumbnail,
+        width: 1920, height: 1440,
+        caption: 'Final standings from our seats',
+        alt: 'The final scoreboard viewed from the team seating area, with the CMU team in third place and a dinosaur-costumed presenter beside the stage.',
+      },
+    ],
   },
 ]
 
