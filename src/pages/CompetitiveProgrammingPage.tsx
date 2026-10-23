@@ -26,10 +26,10 @@ export function CompetitiveProgrammingPage() {
       </header>
 
       <section className="section container icpc-achievements" aria-labelledby="icpc-results-title">
-        <div className="cp-section-head"><div><p className="eyebrow">ICPC Thailand</p><h2 id="icpc-results-title">A journey in problem solving.</h2></div><Trophy size={30} aria-hidden="true" /></div>
+        <div className="cp-section-head"><div><p className="eyebrow">ICPC contests</p><h2 id="icpc-results-title">A journey in problem solving.</h2></div><Trophy size={30} aria-hidden="true" /></div>
         <div className="icpc-results">
           {contests.map((contest) => (
-            <ScrollReveal key={contest.year}>
+            <ScrollReveal key={contest.id}>
               <ContestCard contest={contest} />
             </ScrollReveal>
           ))}

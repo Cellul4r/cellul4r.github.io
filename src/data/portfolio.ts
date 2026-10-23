@@ -23,6 +23,15 @@ import cmuTeams2026Thumbnail from '../assets/icpc/2026/cmu-teams-thumb.webp'
 import warmUp2026Photo from '../assets/icpc/2026/warm-up.webp'
 import warmUp2026Preview from '../assets/icpc/2026/warm-up-preview.webp'
 import warmUp2026Thumbnail from '../assets/icpc/2026/warm-up-thumb.webp'
+import regional2025Team from '../assets/icpc/2025-bangkok-regional/team.webp'
+import regional2025TeamPreview from '../assets/icpc/2025-bangkok-regional/team-preview.webp'
+import regional2025TeamThumbnail from '../assets/icpc/2025-bangkok-regional/team-thumb.webp'
+import regional2025Stage from '../assets/icpc/2025-bangkok-regional/cmu-stage.webp'
+import regional2025StagePreview from '../assets/icpc/2025-bangkok-regional/cmu-stage-preview.webp'
+import regional2025StageThumbnail from '../assets/icpc/2025-bangkok-regional/cmu-stage-thumb.webp'
+import regional2025Venue from '../assets/icpc/2025-bangkok-regional/cmu-venue.webp'
+import regional2025VenuePreview from '../assets/icpc/2025-bangkok-regional/cmu-venue-preview.webp'
+import regional2025VenueThumbnail from '../assets/icpc/2025-bangkok-regional/cmu-venue-thumb.webp'
 
 export const profile = {
   name: 'Theerada Siri',
@@ -101,6 +110,8 @@ export const projects: Project[] = [
 
 export const contests: Contest[] = [
   {
+    id: 'icpc-thailand-national-2026',
+    isPodium: true,
     year: '2026',
     title: 'ICPC Thailand National Contest 2026',
     date: '5–6 September 2026',
@@ -109,7 +120,7 @@ export const contests: Contest[] = [
     field: 'of 61 teams',
     venue: 'Department of Computer Science, Faculty of Science, Kasetsart University, Bangkok',
     teamName: 'AnyaSpyAC',
-    organizerLink: { url: 'https://icpc.cs.sci.ku.ac.th/', label: 'Official contest website' },
+    sourceLinks: [{ url: 'https://icpc.cs.sci.ku.ac.th/', label: 'Official contest website' }],
     highlights: [
       { label: 'Problems solved', value: '7' },
       { label: 'First to solve', value: 'Problem F' },
@@ -142,6 +153,45 @@ export const contests: Contest[] = [
     ],
   },
   {
+    id: 'icpc-bangkok-regional-2025',
+    isPodium: false,
+    year: '2025',
+    title: 'ICPC Bangkok Regional Contest 2025',
+    date: '1–2 November 2025',
+    placement: 'Regional contest',
+    rank: '21st',
+    field: 'of 53 teams with at least one solve',
+    venue: 'Chulalongkorn University, Bangkok',
+    teamName: '100%dp, caffeine addiction, You have evolved. From bulbasaur to idontduckingcare',
+    sourceLinks: [
+      { url: 'https://icpc.cp.eng.chula.ac.th/2025/', label: 'Official contest website' },
+      { url: 'https://icpc-chula.github.io/scoreboard-archive/2025/', label: 'Official final standings' },
+    ],
+    highlights: [{ label: 'Problems solved', value: '5' }],
+    photos: [
+      {
+        src: regional2025Team, previewSrc: regional2025TeamPreview, thumbnailSrc: regional2025TeamThumbnail,
+        width: 2048, height: 1365,
+        caption: 'Our team after the contest',
+        alt: 'Three Chiang Mai University teammates holding balloons at their workstation after ICPC Bangkok Regional Contest 2025.',
+      },
+      {
+        src: regional2025Stage, previewSrc: regional2025StagePreview, thumbnailSrc: regional2025StageThumbnail,
+        width: 2048, height: 1365,
+        caption: 'CMU delegation on stage',
+        alt: 'The Chiang Mai University delegation gathered on stage in front of the ICPC Asia Bangkok 2025 event screen.',
+      },
+      {
+        src: regional2025Venue, previewSrc: regional2025VenuePreview, thumbnailSrc: regional2025VenueThumbnail,
+        width: 2048, height: 1365,
+        caption: 'CMU teams at the contest venue',
+        alt: 'The Chiang Mai University delegation posing together inside the contest hall at Chulalongkorn University.',
+      },
+    ],
+  },
+  {
+    id: 'icpc-thailand-national-2025',
+    isPodium: true,
     year: '2025',
     title: 'ICPC Thailand National Contest 2025',
     date: '6–7 September 2025',
@@ -150,7 +200,7 @@ export const contests: Contest[] = [
     field: 'of 74 teams',
     venue: "School of Science, King Mongkut's Institute of Technology Ladkrabang (KMITL), Bangkok",
     teamName: 'UndefinedAC + HomuraAkemi + Intercontinental Ballistic Missile CMU',
-    organizerLink: { url: 'https://www.facebook.com/share/p/19dfi5mzaz/', label: 'Organizer’s award announcement' },
+    sourceLinks: [{ url: 'https://www.facebook.com/share/p/19dfi5mzaz/', label: 'Organizer’s award announcement' }],
     photos: [
       {
         src: awardPhoto, previewSrc: awardPreview, thumbnailSrc: awardThumbnail,

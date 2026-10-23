@@ -19,6 +19,8 @@ export interface Project {
 }
 
 export interface Contest {
+  id: string
+  isPodium: boolean
   year: string
   title: string
   date?: string
@@ -27,7 +29,7 @@ export interface Contest {
   field: string
   venue: string
   teamName?: string
-  organizerLink?: { url: string; label: string }
+  sourceLinks?: { url: string; label: string }[]
   highlights?: { label: string; value: string }[]
   photos?: ContestPhoto[]
 }

@@ -16,7 +16,7 @@ const destinations = [
   {
     to: '/competitive-programming',
     title: 'Competitive Programming',
-    summary: `${contests.length} ICPC podium finishes`,
+    summary: `${contests.filter(contest => contest.isPodium).length} ICPC podium finishes`,
     description: 'Algorithms, contest results, and weekly tutoring / TA sessions.',
     icon: Trophy,
     theme: 'contests',

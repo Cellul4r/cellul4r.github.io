@@ -60,7 +60,7 @@ export function PhotoViewer({ title, photos, activeIndex, onIndexChange, onClose
 
         <div className="photo-viewer-controls">
           <button className="photo-viewer-icon" type="button" disabled={activeIndex === 0} aria-label="Previous photo" onClick={() => onIndexChange(activeIndex - 1)}><ChevronLeft size={24} aria-hidden="true" /></button>
-          <div className="photo-viewer-thumbnails" role="group" aria-label="Select a contest photo">
+          <div className="photo-viewer-thumbnails" role="group" aria-label="Select a contest photo" style={{ gridTemplateColumns: `repeat(${Math.min(4, photos.length)}, minmax(0, 1fr))` }}>
             {photos.map((item, index) => <button key={item.src} type="button" aria-label={`Photo ${index + 1}: ${item.caption}`} aria-current={index === activeIndex ? 'true' : undefined} onClick={() => onIndexChange(index)}><img src={item.thumbnailSrc} width={item.width} height={item.height} alt="" /></button>)}
           </div>
           <button className="photo-viewer-icon" type="button" disabled={activeIndex === photos.length - 1} aria-label="Next photo" onClick={() => onIndexChange(activeIndex + 1)}><ChevronRight size={24} aria-hidden="true" /></button>

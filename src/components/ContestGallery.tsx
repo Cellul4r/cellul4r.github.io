@@ -13,6 +13,7 @@ export function ContestGallery({ title, photos }: ContestGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const mainPhoto = photos[0]
   if (!mainPhoto) return null
+  const thumbnailColumns = Math.min(3, photos.length - 1)
 
   return (
     <div className="contest-gallery">
@@ -24,16 +25,16 @@ export function ContestGallery({ title, photos }: ContestGalleryProps) {
         <figcaption>{mainPhoto.caption}</figcaption>
       </figure>
 
-      <div className="contest-gallery-thumbnails">
+      {thumbnailColumns > 0 && <div className="contest-gallery-thumbnails" style={{ gridTemplateColumns: `repeat(${thumbnailColumns}, minmax(0, 1fr))` }}>
         {photos.slice(1).map((photo, index) => (
           <figure key={photo.src}>
             <button className="contest-photo-button" type="button" onClick={() => setActiveIndex(index + 1)} aria-label={`Enlarge photo: ${photo.caption}`} aria-haspopup="dialog">
-              <img src={photo.thumbnailSrc} srcSet={`${photo.thumbnailSrc} ${Math.min(360, photo.width)}w, ${photo.previewSrc} ${Math.min(960, photo.width)}w`} sizes="(min-width: 1024px) 180px, 30vw" width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+              <img src={photo.thumbnailSrc} srcSet={`${photo.thumbnailSrc} ${Math.min(360, photo.width)}w, ${photo.previewSrc} ${Math.min(960, photo.width)}w`} sizes={`(min-width: 1024px) ${Math.ceil(560 / thumbnailColumns)}px, ${Math.floor(90 / thumbnailColumns)}vw`} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
             </button>
             <figcaption>{photo.caption}</figcaption>
           </figure>
         ))}
-      </div>
+      </div>}
 
       <button className="contest-gallery-all" type="button" onClick={() => setActiveIndex(0)} aria-haspopup="dialog"><Images size={17} aria-hidden="true" />View all {photos.length} photos<ArrowUpRight size={17} aria-hidden="true" /></button>
 

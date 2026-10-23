@@ -1,4 +1,4 @@
-import { ArrowUpRight, CalendarDays, MapPin, Medal, Users } from 'lucide-react'
+import { ArrowUpRight, CalendarDays, Flag, MapPin, Medal, Users } from 'lucide-react'
 import type { Contest } from '../types/portfolio'
 import { ContestGallery } from './ContestGallery'
 
@@ -7,16 +7,16 @@ export function ContestCard({ contest }: { contest: Contest }) {
   const hasPhotos = Boolean(photos?.length)
 
   return (
-    <article className={`icpc-result ${hasPhotos ? 'icpc-result-featured' : 'icpc-result-compact'}`} aria-labelledby={`contest-${contest.year}`}>
+    <article className={`icpc-result ${hasPhotos ? 'icpc-result-featured' : 'icpc-result-compact'}`} aria-labelledby={`contest-${contest.id}`}>
       <header className="icpc-result-heading">
         <div className="icpc-result-topline">
           <span className="icpc-year">{contest.year}</span>
-          <span className="icpc-award"><Medal size={17} aria-hidden="true" />{contest.placement}</span>
+          <span className={`icpc-award${contest.isPodium ? '' : ' icpc-participation'}`}>{contest.isPodium ? <Medal size={17} aria-hidden="true" /> : <Flag size={17} aria-hidden="true" />}{contest.placement}</span>
         </div>
-        <h3 id={`contest-${contest.year}`}>{contest.title}</h3>
+        <h3 id={`contest-${contest.id}`}>{contest.title}</h3>
         <p className="icpc-standing"><strong>{contest.rank}</strong><span>{contest.field}</span></p>
         {contest.highlights && contest.highlights.length > 0 && (
-          <dl className="icpc-highlights">
+          <dl className="icpc-highlights" style={{ gridTemplateColumns: `repeat(${Math.min(2, contest.highlights.length)}, minmax(0, 1fr))` }}>
             {contest.highlights.map((highlight) => <div key={highlight.label}><dt>{highlight.label}</dt><dd>{highlight.value}</dd></div>)}
           </dl>
         )}
@@ -39,9 +39,9 @@ export function ContestCard({ contest }: { contest: Contest }) {
             <dd>{contest.teamName}</dd>
           </div>}
         </dl>
-        {contest.organizerLink && (
-          <div className="icpc-source-links" role="group" aria-label="Contest organizer">
-            <a href={contest.organizerLink.url} target="_blank" rel="noopener noreferrer">{contest.organizerLink.label} <ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
+        {contest.sourceLinks && contest.sourceLinks.length > 0 && (
+          <div className="icpc-source-links" role="group" aria-label="Official contest sources">
+            {contest.sourceLinks.map(link => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label} <ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>)}
           </div>
         )}
       </div>

@@ -20,6 +20,7 @@
 .icpc-year { color: var(--accent-amber); font-family: 'IBM Plex Mono', monospace; font-size: var(--font-size-caption); font-weight: 600; letter-spacing: .07em; }
 .icpc-award { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #dbc79f; border-radius: 5px; background: #fff6e2; color: #805713; font-size: var(--font-size-caption); font-weight: 600; }
 .icpc-award svg { flex-shrink: 0; }
+.icpc-participation { border-color: #c4d1bd; background: #edf2e4; color: #3d624c; }
 .icpc-result h3 { font-family: Fredoka, 'DM Sans', sans-serif; font-size: clamp(1.55rem, 3vw, 2.2rem); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
 .icpc-standing { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; margin-top: 16px !important; }
 .icpc-standing strong { color: var(--accent-burgundy); font-family: Fredoka, 'DM Sans', sans-serif; font-size: 2.8rem; line-height: 1.1; font-weight: 500; }
