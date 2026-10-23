@@ -60,6 +60,13 @@
 .tableScroll th, .tableScroll td { text-align: left; padding: 12px; border-bottom: 1px solid #dce2d2; }
 .tableScroll tbody th { font-weight: 500; }
 .tableScroll a { text-decoration: underline; text-underline-offset: 3px; }
+.paginationFooter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 16px; }
+.paginationFooter p { margin: 0; line-height: 1.6; }
+.pagination { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.pagination > span { white-space: nowrap; }
+.pagination button { min-height: 44px; padding: 9px 12px; border: 1px solid #b9c7ad; border-radius: 4px; background: #f2f5e9; color: #315d43; font: inherit; cursor: pointer; }
+.pagination button:hover:not(:disabled) { border-color: #315d43; background: #e6eddb; }
+.pagination button:disabled { background: #f5f4ed; color: #777c70; border-color: #dce0d3; cursor: default; }
 .countList { margin: 0; display: grid; gap: 8px; padding-block: 10px; }
 .countList > div { display: flex; justify-content: space-between; gap: 12px; }
 .countList dd { margin: 0; font-weight: 600; }

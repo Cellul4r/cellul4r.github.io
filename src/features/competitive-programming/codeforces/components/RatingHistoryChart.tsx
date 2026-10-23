@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ReferenceDot, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { useReducedMotion } from 'framer-motion'
-import { formatDate, formatNumber } from '../config'
+import { formatNumber } from '../config'
 import type { RatingPoint } from '../types'
 import { buildRatingTimeline, formatRatingDateTime, formatRatingMonth } from '../ratingTimeline'
+import { RatingHistoryTable } from './RatingHistoryTable'
 import styles from '../CodeforcesProfile.module.css'
 
 export function RatingHistoryChart({ points }: { points: RatingPoint[] }) {
@@ -35,7 +36,7 @@ export function RatingHistoryChart({ points }: { points: RatingPoint[] }) {
         {peak && <span><i className={styles.peakMark} aria-hidden="true" />Peak in chart <strong>{formatNumber(peak.newRating)}</strong></span>}
         {latest && <span><i className={styles.latestMark} aria-hidden="true" />Latest <strong>{formatNumber(latest.newRating)}</strong></span>}
       </div>
-      <details className={styles.dataTable}><summary>View rating history as a table</summary><div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Complete rating history"><table><thead><tr><th scope="col">Contest</th><th scope="col">Rating updated</th><th scope="col">Rating</th><th scope="col">Change</th></tr></thead><tbody>{points.map(point => <tr key={point.contestId}><th scope="row"><a href={`https://codeforces.com/contest/${point.contestId}`} target="_blank" rel="noopener noreferrer">{point.contestName}<span className="sr-only"> (opens in a new tab)</span></a></th><td>{formatDate(point.ratingUpdateTimeSeconds)}</td><td>{formatNumber(point.newRating)}</td><td>{point.change > 0 ? '+' : ''}{point.change}</td></tr>)}</tbody></table></div></details>
+      <RatingHistoryTable points={points} />
     </>}
   </>
 }

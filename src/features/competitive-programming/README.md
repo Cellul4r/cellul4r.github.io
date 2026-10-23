@@ -31,6 +31,8 @@ The profile shares the home page's cream background and Fredoka headings. Open s
 
 `ratingTimeline.ts` prepares calendar-aligned month/year ticks from the rating timestamps and the measured chart width. Narrow charts show fewer ticks, while a date-range caption preserves the complete history span. A gold diamond marks the peak in the displayed history and a green circle marks the latest rating. Every chart also has an accessible data view.
 
+`RatingHistoryTable` paginates the already-fetched history locally into ten-contest pages, newest first. Closing the disclosure or refreshing data preserves the page; a shorter history clamps it to the last available page. Pagination does not affect the chart or make API requests.
+
 ## Validation
 
 - `npm test`: colocated API, statistics, queue, timeline, and query/UI tests.
