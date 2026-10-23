@@ -18,7 +18,7 @@ export function ContestGallery({ title, photos }: ContestGalleryProps) {
     <div className="contest-gallery">
       <figure className="contest-gallery-main">
         <button className="contest-photo-button" type="button" onClick={() => setActiveIndex(0)} aria-label={`Enlarge photo: ${mainPhoto.caption}`} aria-haspopup="dialog">
-          <img src={mainPhoto.previewSrc} srcSet={`${mainPhoto.previewSrc} 960w, ${mainPhoto.src} ${mainPhoto.width}w`} sizes="(min-width: 1024px) 640px, (min-width: 768px) 90vw, 100vw" width={mainPhoto.width} height={mainPhoto.height} alt={mainPhoto.alt} loading="lazy" decoding="async" />
+          <img src={mainPhoto.previewSrc} srcSet={`${mainPhoto.previewSrc} ${Math.min(960, mainPhoto.width)}w, ${mainPhoto.src} ${mainPhoto.width}w`} sizes="(min-width: 1024px) 640px, (min-width: 768px) 90vw, 100vw" width={mainPhoto.width} height={mainPhoto.height} alt={mainPhoto.alt} loading="lazy" decoding="async" />
           <span className="contest-photo-expand" aria-hidden="true"><Maximize2 size={17} /></span>
         </button>
         <figcaption>{mainPhoto.caption}</figcaption>
@@ -28,7 +28,7 @@ export function ContestGallery({ title, photos }: ContestGalleryProps) {
         {photos.slice(1).map((photo, index) => (
           <figure key={photo.src}>
             <button className="contest-photo-button" type="button" onClick={() => setActiveIndex(index + 1)} aria-label={`Enlarge photo: ${photo.caption}`} aria-haspopup="dialog">
-              <img src={photo.thumbnailSrc} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+              <img src={photo.thumbnailSrc} srcSet={`${photo.thumbnailSrc} ${Math.min(360, photo.width)}w, ${photo.previewSrc} ${Math.min(960, photo.width)}w`} sizes="(min-width: 1024px) 180px, 30vw" width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
             </button>
             <figcaption>{photo.caption}</figcaption>
           </figure>

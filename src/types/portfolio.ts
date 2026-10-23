@@ -21,12 +21,14 @@ export interface Project {
 export interface Contest {
   year: string
   title: string
+  date?: string
   placement: string
   rank: string
   field: string
   venue: string
   teamName?: string
-  organizerAnnouncementUrl?: string
+  organizerLink?: { url: string; label: string }
+  highlights?: { label: string; value: string }[]
   photos?: ContestPhoto[]
 }
 

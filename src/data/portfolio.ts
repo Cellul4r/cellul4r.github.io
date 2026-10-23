@@ -11,6 +11,18 @@ import warmUpThumbnail from '../assets/icpc/2025/warm-up-thumb.webp'
 import scoreboardPhoto from '../assets/icpc/2025/scoreboard.webp'
 import scoreboardPreview from '../assets/icpc/2025/scoreboard-preview.webp'
 import scoreboardThumbnail from '../assets/icpc/2025/scoreboard-thumb.webp'
+import award2026Photo from '../assets/icpc/2026/award.webp'
+import award2026Preview from '../assets/icpc/2026/award-preview.webp'
+import award2026Thumbnail from '../assets/icpc/2026/award-thumb.webp'
+import team2026Photo from '../assets/icpc/2026/team.webp'
+import team2026Preview from '../assets/icpc/2026/team-preview.webp'
+import team2026Thumbnail from '../assets/icpc/2026/team-thumb.webp'
+import cmuTeams2026Photo from '../assets/icpc/2026/cmu-teams.webp'
+import cmuTeams2026Preview from '../assets/icpc/2026/cmu-teams-preview.webp'
+import cmuTeams2026Thumbnail from '../assets/icpc/2026/cmu-teams-thumb.webp'
+import warmUp2026Photo from '../assets/icpc/2026/warm-up.webp'
+import warmUp2026Preview from '../assets/icpc/2026/warm-up-preview.webp'
+import warmUp2026Thumbnail from '../assets/icpc/2026/warm-up-thumb.webp'
 
 export const profile = {
   name: 'Theerada Siri',
@@ -91,20 +103,54 @@ export const contests: Contest[] = [
   {
     year: '2026',
     title: 'ICPC Thailand National Contest 2026',
+    date: '5–6 September 2026',
     placement: 'First Runner-Up',
     rank: '2nd',
     field: 'of 61 teams',
-    venue: 'Faculty of Computer Science, Kasetsart University, Bangkok',
+    venue: 'Department of Computer Science, Faculty of Science, Kasetsart University, Bangkok',
+    teamName: 'AnyaSpyAC',
+    organizerLink: { url: 'https://icpc.cs.sci.ku.ac.th/', label: 'Official contest website' },
+    highlights: [
+      { label: 'Problems solved', value: '7' },
+      { label: 'First to solve', value: 'Problem F' },
+    ],
+    photos: [
+      {
+        src: award2026Photo, previewSrc: award2026Preview, thumbnailSrc: award2026Thumbnail,
+        width: 1800, height: 1200,
+        caption: 'Receiving the First Runner-Up award',
+        alt: 'Team AnyaSpyAC on stage holding the First Runner-Up and first-to-solve awards at ICPC Thailand National Contest 2026.',
+      },
+      {
+        src: team2026Photo, previewSrc: team2026Preview, thumbnailSrc: team2026Thumbnail,
+        width: 2048, height: 1536,
+        caption: 'Team AnyaSpyAC at Kasetsart University',
+        alt: 'Team AnyaSpyAC posing together at the CSKU sign and ICPC Thailand National Contest 2026 backdrop.',
+      },
+      {
+        src: cmuTeams2026Photo, previewSrc: cmuTeams2026Preview, thumbnailSrc: cmuTeams2026Thumbnail,
+        width: 1457, height: 1123,
+        caption: 'CMU teams at ICPC Thailand 2026',
+        alt: 'The Chiang Mai University teams gathered with a purple CMU flag in front of the ICPC Thailand National Contest 2026 backdrop.',
+      },
+      {
+        src: warmUp2026Photo, previewSrc: warmUp2026Preview, thumbnailSrc: warmUp2026Thumbnail,
+        width: 2048, height: 1536,
+        caption: 'During the contest warm-up',
+        alt: 'Three teammates at their workstation with the contest problem sheets during the warm-up at ICPC Thailand National Contest 2026.',
+      },
+    ],
   },
   {
     year: '2025',
     title: 'ICPC Thailand National Contest 2025',
+    date: '6–7 September 2025',
     placement: 'Second Runner-Up',
     rank: '3rd',
     field: 'of 74 teams',
     venue: "School of Science, King Mongkut's Institute of Technology Ladkrabang (KMITL), Bangkok",
     teamName: 'UndefinedAC + HomuraAkemi + Intercontinental Ballistic Missile CMU',
-    organizerAnnouncementUrl: 'https://www.facebook.com/share/p/19dfi5mzaz/',
+    organizerLink: { url: 'https://www.facebook.com/share/p/19dfi5mzaz/', label: 'Organizer’s award announcement' },
     photos: [
       {
         src: awardPhoto, previewSrc: awardPreview, thumbnailSrc: awardThumbnail,
