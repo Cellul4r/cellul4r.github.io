@@ -12,11 +12,11 @@ export function ScrollReveal({ children, className }: ScrollRevealProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 48 }}
-      animate={reduceMotion ? { opacity: 1, y: 0 } : undefined}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -80px 0px', amount: 0.1 }}
-      transition={{ duration: reduceMotion ? 0 : 1.1, ease: [0.22, 0.61, 0.36, 1] }}
+      initial={reduceMotion ? false : { y: 16 }}
+      animate={reduceMotion ? { y: 0 } : undefined}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true, amount: 'some' }}
+      transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.22, 0.61, 0.36, 1] }}
     >
       {children}
     </motion.div>
