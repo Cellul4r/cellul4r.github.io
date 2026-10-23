@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "test:matching": "node --test tests/matching.test.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build && node -e \"require('node:fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
     "preview": "vite preview"

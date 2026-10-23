@@ -1,0 +1,49 @@
+.cp-introduction { display: grid; gap: 36px; align-items: center; }
+.cp-introduction > * { min-width: 0; }
+.matching-demo { position: relative; width: 100%; max-width: 500px; margin-inline: auto; padding: 12px 20px 0; border: 1px solid #d7d6ba; border-radius: 12px; background: rgba(255, 253, 246, .65); box-shadow: 0 12px 40px #294c3510; color: #254c3b; }
+.matching-demo * { animation-play-state: inherit; }
+.matching-graph { display: block; width: 100%; max-width: 340px; height: auto; overflow: visible; margin: 0 auto; }
+.matching-edge { stroke: #a7b7a0; stroke-width: 1.6; }
+.matching-edge.is-terminal { opacity: .55; }
+.matching-edge.is-matched { stroke: #347554; stroke-width: 4; }
+.matching-path { stroke: #b47a14; stroke-width: 4; }
+.matching-path.is-reverse { stroke: #873747; stroke-dasharray: 7 4; }
+.matching-arrow-base { fill: #688461; }
+.matching-arrow-path { fill: #b47a14; }
+.matching-arrow-reverse { fill: #873747; }
+.matching-flow-dot { fill: #fffaf0; stroke: #805713; stroke-width: 2; }
+.matching-node circle { fill: #f8f4e4; stroke: #73906c; stroke-width: 2; }
+.matching-node text { fill: #254c3b; font: 500 20px 'IBM Plex Mono', monospace; }
+.matching-node.is-source-sink circle { fill: #eee5d3; stroke: #987231; }
+.matching-node.is-matched circle { fill: #347554; stroke: #347554; }
+.matching-node.is-matched text { fill: #fffaf0; }
+.matching-node.is-on-path circle { stroke: #b47a14; stroke-width: 3; }
+.matching-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 6px; min-height: 96px; }
+.matching-controls { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 18px; position: relative; z-index: 1; }
+.matching-controls button { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; padding: 8px; border: 1px solid #bdc7ae; border-radius: 5px; color: #254c3b; background: #edf2e4; cursor: pointer; }
+.matching-controls button:hover:not(:disabled) { background: #dfe9d5; border-color: #73906c; }
+.matching-controls button:disabled { opacity: .5; cursor: default; }
+.matching-mascot-stage { flex: 0 0 126px; height: 96px; position: relative; animation-play-state: inherit; }
+.matching-anya { position: absolute; height: 112px; width: 75px; bottom: 0; left: 0; object-fit: contain; transform-origin: 50% 90%; animation-play-state: inherit !important; }
+.matching-anya.is-intro:not(.is-pressing) { animation: matching-enter 1.1s ease-out both; }
+.matching-anya.is-pressing { left: 20px; animation: matching-press .9s ease-in-out both; }
+.matching-anya.is-celebrating { animation: matching-celebrate 1.2s ease-out both; }
+.matching-play-prop { position: absolute; right: 0; top: 37px; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; border-radius: 5px; background: #347554; color: #fffaf0; box-shadow: 0 4px 0 #234e39; }
+.matching-play-prop.is-pressed { animation: matching-button .9s ease-in-out both; animation-play-state: inherit; }
+.matching-sparkles { position: absolute; left: -3px; right: 45px; top: 6px; display: flex; justify-content: space-between; color: #a77313; animation: matching-sparkle 1.3s ease-out both; animation-play-state: inherit; }
+.matching-sparkles span { margin-top: -15px; }
+@keyframes matching-enter { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes matching-press { 40%, 65% { transform: translate(8px, 3px) rotate(4deg); } }
+@keyframes matching-button { 40%, 65% { transform: translateY(4px); box-shadow: 0 0 0 #234e39; } }
+@keyframes matching-celebrate { 0%, 45%, 100% { transform: translateY(0) rotate(0); } 22% { transform: translateY(-13px) rotate(-4deg); } 68% { transform: translateY(-7px) rotate(4deg); } }
+@keyframes matching-sparkle { 0% { opacity: 0; transform: scale(.6); } 35% { opacity: 1; } 100% { opacity: 0; transform: scale(1.2) translateY(-8px); } }
+.matching-demo.is-reduced * { animation: none !important; }
+@media (min-width: 64rem) {
+  .cp-introduction { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; }
+  .cp-page .cp-hero .cp-introduction h1 { font-size: clamp(2.9rem, 5.3vw, 4.5rem); }
+}
+@media (max-width: 380px) {
+  .matching-demo { padding-inline: 12px; }
+  .matching-node text { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) { .matching-demo * { animation: none !important; } }

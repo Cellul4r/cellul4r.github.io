@@ -1,6 +1,7 @@
 import { Binary, BookOpen, ChevronRight, Sigma, Trophy, Users } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ContestCard } from '../components/ContestCard'
+import { MatchingDemo } from '../components/MatchingDemo'
 import { ScrollReveal } from '../components/ScrollReveal'
 import { contests } from '../data/portfolio'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -20,6 +21,7 @@ export function CompetitiveProgrammingPage() {
             <h1>Think clearly.<br /><em>Code precisely.</em></h1>
             <p>Algorithms and data structures are more than contest tools—they shape how I reason about constraints, trade-offs, and correctness.</p>
           </div>
+          <MatchingDemo />
         </div>
       </header>
 
