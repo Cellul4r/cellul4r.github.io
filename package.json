@@ -4,27 +4,35 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "test": "vitest run",
     "test:matching": "node --test tests/matching.test.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build && node -e \"require('node:fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.104.5",
     "@vitejs/plugin-react": "latest",
     "framer-motion": "latest",
     "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
+    "recharts": "^3.10.1",
     "vite": "latest"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.104.5",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "jsdom": "^30.1.3",
     "postcss": "latest",
     "tailwindcss": "^3.4.17",
-    "typescript": "latest"
+    "typescript": "latest",
+    "vitest": "^5.0.5"
   }
 }

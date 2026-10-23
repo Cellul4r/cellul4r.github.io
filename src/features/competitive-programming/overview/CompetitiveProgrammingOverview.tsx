@@ -1,9 +1,11 @@
-import { Binary, BookOpen, ChevronRight, Sigma, Trophy, Users } from 'lucide-react'
+import { ArrowRight, Binary, BookOpen, ChevronRight, Sigma, Trophy, Users } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ContestCard } from '../contests/ContestCard'
 import { MatchingDemo } from '../matching/MatchingDemo'
 import { ScrollReveal } from '../../../components/ScrollReveal'
 import { contests } from '../../../data/portfolio'
+import codeforcesLogo from '../../../assets/brands/codeforces.png'
 import './overview.css'
 
 const topics = ['Mathematics', 'Binary search', 'Prefix sums', 'Recursion', 'Dynamic programming']
@@ -18,6 +20,7 @@ export function CompetitiveProgrammingOverview() {
             <p className="eyebrow">Competitive programming</p>
             <h1>Think clearly.<br /><em>Code precisely.</em></h1>
             <p>Algorithms and data structures are more than contest tools—they shape how I reason about constraints, trade-offs, and correctness.</p>
+            <Link to="/competitive-programming/codeforces" className="cp-codeforces-link"><img src={codeforcesLogo} width={16} height={16} alt="" aria-hidden="true" />Codeforces profile <ArrowRight size={18} aria-hidden="true" /></Link>
           </div>
           <MatchingDemo />
         </div>

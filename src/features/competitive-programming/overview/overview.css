@@ -13,6 +13,10 @@
 .cp-page .cp-section-head > svg { flex-shrink: 0; }
 .cp-introduction { display: grid; gap: 36px; align-items: center; }
 .cp-introduction > * { min-width: 0; }
+.cp-codeforces-link { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; margin-top: 24px; padding: 11px 18px; border: 1px solid #aec3a4; border-radius: 6px; background: #e8eedb; color: #285c40; font-size: var(--font-size-control); font-weight: 600; transition: background .15s, border-color .15s; }
+.cp-codeforces-link:hover { background: #dce7cf; border-color: #72966a; }
+.cp-codeforces-link img, .cp-codeforces-link svg { flex-shrink: 0; }
+.cp-codeforces-link img { display: block; width: 16px; height: 16px; }
 @media (min-width: 48rem) {
   .cp-page .cp-hero { padding-block: 60px; }
   .cp-page .icpc-achievements { padding-block: 64px 88px; }
