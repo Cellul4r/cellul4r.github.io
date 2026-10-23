@@ -1,6 +1,7 @@
 import { ArrowUpRight, CalendarDays, Flag, MapPin, Medal, Users } from 'lucide-react'
-import type { Contest } from '../types/portfolio'
+import type { Contest } from '../../../types/portfolio'
 import { ContestGallery } from './ContestGallery'
+import './contests.css'
 
 export function ContestCard({ contest }: { contest: Contest }) {
   const photos = contest.photos

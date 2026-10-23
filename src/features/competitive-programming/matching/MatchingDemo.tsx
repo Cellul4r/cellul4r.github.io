@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react'
 import { Pause, Play, RotateCcw, Shuffle } from 'lucide-react'
 import { MatchingGraph } from './MatchingGraph'
-import { useMatchingPlayback } from '../hooks/useMatchingPlayback'
-import { buildMatchingFrames, frameAt, generateGraph, solveMatching } from '../lib/matching'
-import ready from '../assets/anya-matching/ready.webp'
-import press from '../assets/anya-matching/press.webp'
-import celebrate from '../assets/anya-matching/celebrate.webp'
+import { useMatchingPlayback } from './useMatchingPlayback'
+import { buildMatchingFrames, frameAt, generateGraph, solveMatching } from './matching'
+import ready from '../../../assets/anya-matching/ready.webp'
+import press from '../../../assets/anya-matching/press.webp'
+import celebrate from '../../../assets/anya-matching/celebrate.webp'
 import './MatchingDemo.css'
 
 const poses = [ready, press, celebrate]

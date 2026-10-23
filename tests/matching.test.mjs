@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { solveMatching, generateGraph, graphKey, buildMatchingFrames, frameAt } from '../src/lib/matching.ts'
+import { solveMatching, generateGraph, graphKey, buildMatchingFrames, frameAt } from '../src/features/competitive-programming/matching/matching.ts'
 
 function exhaustive(edges, left = 1, used = new Set()) {
   if (left > 3) return 0

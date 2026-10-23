@@ -1,0 +1,23 @@
+.cp-page .cp-hero {
+  padding-block: 52px;
+  background: radial-gradient(ellipse at 90% 25%, rgba(135, 55, 71, .07), transparent 50%), #fff4dc;
+}
+.cp-page .cp-hero::before { background: radial-gradient(ellipse at 5% 100%, rgba(83, 157, 108, .11), transparent 65%); }
+.cp-introduction { position: relative; }
+.cp-page .cp-hero h1 { color: #3b7856; font-size: clamp(2.9rem, 7vw, 5.5rem); font-weight: 600; line-height: 1.02; letter-spacing: -.045em; }
+.cp-page .cp-hero h1 em { color: var(--accent-burgundy); -webkit-text-stroke: 0; }
+.cp-page .cp-hero p:not(.eyebrow) { max-width: 620px; margin-top: 22px; color: var(--text-body); font-size: var(--font-size-body); }
+.cp-page .icpc-achievements { padding-block: 56px 72px; }
+.cp-page .cp-section-head { gap: 20px; margin-bottom: 30px; }
+.cp-page .cp-section-head h2 { max-width: 720px; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+.cp-page .cp-section-head > svg { flex-shrink: 0; }
+.cp-introduction { display: grid; gap: 36px; align-items: center; }
+.cp-introduction > * { min-width: 0; }
+@media (min-width: 48rem) {
+  .cp-page .cp-hero { padding-block: 60px; }
+  .cp-page .icpc-achievements { padding-block: 64px 88px; }
+}
+@media (min-width: 64rem) {
+  .cp-introduction { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; }
+  .cp-page .cp-hero .cp-introduction h1 { font-size: clamp(2.9rem, 5.3vw, 4.5rem); }
+}

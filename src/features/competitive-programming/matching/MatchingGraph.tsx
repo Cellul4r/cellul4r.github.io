@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import type { MatchingEdge, MatchingFrame } from '../lib/matching'
+import type { MatchingEdge, MatchingFrame } from './matching'
 
 const positions = [
   [27, 140], [105, 52], [105, 140], [105, 228],

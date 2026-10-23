@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import type { ContestPhoto } from '../types/portfolio'
+import type { ContestPhoto } from '../../../types/portfolio'
 
 interface PhotoViewerProps {
   title: string
