@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin } from 'lucide-react'
 import { codeforcesProfile } from '../config'
 import codeforcesLogo from '../../../../assets/brands/codeforces.png'
 import type { CodeforcesUser } from '../types'
+import { CodeforcesMascot } from './CodeforcesMascot'
 import styles from '../CodeforcesProfile.module.css'
 
 const rankColors: Record<string, string> = {
@@ -28,6 +29,7 @@ export function ProfileHeader({ user }: { user?: CodeforcesUser }) {
         </div>
       </div>
       <a className={styles.externalLink} href={codeforcesProfile.url} target="_blank" rel="noopener noreferrer">View on Codeforces <ArrowUpRight size={17} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
+      <CodeforcesMascot />
     </header>
   )
 }
