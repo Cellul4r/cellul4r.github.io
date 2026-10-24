@@ -3,8 +3,15 @@ import githubLogo from '../assets/brands/github.svg'
 import linkedinLogo from '../assets/brands/linkedin.png'
 import { profile } from '../data/portfolio'
 import { ScrollReveal } from './ScrollReveal'
-import { EvergreenSprig } from './decorations/EvergreenSprig'
+import { SeasonalFoliage } from './decorations/SeasonalFoliage'
 import './ContactSection.css'
+
+function ContactBoardDecorations() {
+  return <div className="contact-edge-decorations" aria-hidden="true">
+    <SeasonalFoliage variant="full" className="contact-foliage contact-foliage-top-right" />
+    <SeasonalFoliage variant="sprig" className="contact-foliage contact-foliage-bottom-left" />
+  </div>
+}
 
 export function ContactSection() {
   return (
@@ -12,7 +19,7 @@ export function ContactSection() {
       <div className="container">
         <ScrollReveal className="contact-board contact-grid">
           <span className="contact-fasteners" aria-hidden="true" />
-          <EvergreenSprig className="contact-sprig" />
+          <ContactBoardDecorations />
           <div className="contact-copy">
             <p className="eyebrow">Get in touch</p>
             <h2 id="contact-title">Let’s build<br /><em>something.</em></h2>
