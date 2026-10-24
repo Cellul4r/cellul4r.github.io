@@ -1,16 +1,29 @@
 .cp-page .cp-hero {
-  padding-block: 52px;
+  padding-block: 80px 52px;
   background: radial-gradient(ellipse at 90% 25%, rgba(135, 55, 71, .07), transparent 50%), #fff4dc;
 }
 .cp-page .cp-hero::before { background: radial-gradient(ellipse at 5% 100%, rgba(83, 157, 108, .11), transparent 65%); }
 .cp-introduction { position: relative; }
+.cp-hero-foliage { position: absolute; top: 0; right: max(12px, calc((100% - 1160px) / 2)); width: 144px; height: 72px; pointer-events: none; }
+.cp-hero-foliage > svg { display: block; width: 100%; height: auto; }
+.cp-hero-foliage::before, .cp-hero-foliage::after, .cp-achievement-mark::after { content: ''; position: absolute; background: #ad8a49; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); pointer-events: none; }
+.cp-hero-foliage::before { left: 5px; bottom: 12px; width: 7px; height: 7px; opacity: .75; }
+.cp-hero-foliage::after { left: 27px; bottom: 4px; width: 4px; height: 4px; opacity: .55; }
+.cp-matching-scene { position: relative; isolation: isolate; }
+.cp-matching-scene::before { content: ''; position: absolute; z-index: -1; inset: -24px -16px; border-radius: 50%; background: radial-gradient(ellipse at 55% 50%, #d2a25824, #e4bd8110 45%, transparent 72%); pointer-events: none; }
+.cp-matching-scene .matching-demo { box-shadow: 0 10px 30px #7857340d; }
 .cp-page .cp-hero h1 { color: #3b7856; font-size: clamp(2.9rem, 7vw, 5.5rem); font-weight: 600; line-height: 1.02; letter-spacing: -.045em; }
 .cp-page .cp-hero h1 em { color: var(--accent-burgundy); -webkit-text-stroke: 0; }
 .cp-page .cp-hero p:not(.eyebrow) { max-width: 620px; margin-top: 22px; color: var(--text-body); font-size: var(--font-size-body); }
 .cp-page .icpc-achievements { padding-block: 56px 72px; }
 .cp-page .cp-section-head { gap: 20px; margin-bottom: 30px; }
 .cp-page .cp-section-head h2 { max-width: 720px; font-size: clamp(2rem, 4.4vw, 3.2rem); }
-.cp-page .cp-section-head > svg { flex-shrink: 0; }
+.cp-achievement-mark { position: relative; display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; }
+.cp-achievement-mark::after { top: 0; left: 0; width: 7px; height: 7px; opacity: .8; }
+.cp-page .tutoring-section { position: relative; isolation: isolate; background: #e7e9dc; border-top-color: #b6bca333; }
+.cp-page .tutoring-grid > div > p:not(.eyebrow), .cp-page .session-stat span { color: var(--text-secondary); }
+.cp-tutoring-foliage { position: absolute; z-index: -1; bottom: 12px; left: max(16px, calc((100% - 1160px) / 2)); display: block; width: 96px; height: auto; opacity: .55; pointer-events: none; }
+.cp-page .topic-board { background: #fffcf4; border-color: #b8c0a866; box-shadow: 0 12px 30px #6e5a3510; }
 .cp-introduction { display: grid; gap: 36px; align-items: center; }
 .cp-introduction > * { min-width: 0; }
 .cp-codeforces-link { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; margin-top: 24px; padding: 11px 18px; border: 1px solid #aec3a4; border-radius: 6px; background: #e8eedb; color: #285c40; font-size: var(--font-size-control); font-weight: 600; transition: background .15s, border-color .15s; }
@@ -18,7 +31,9 @@
 .cp-codeforces-link img, .cp-codeforces-link svg { flex-shrink: 0; }
 .cp-codeforces-link img { display: block; width: 16px; height: 16px; }
 @media (min-width: 48rem) {
-  .cp-page .cp-hero { padding-block: 60px; }
+  .cp-page .cp-hero { padding-block: 96px 60px; }
+  .cp-hero-foliage { width: 176px; height: 88px; }
+  .cp-tutoring-foliage { bottom: 16px; width: 128px; }
   .cp-page .icpc-achievements { padding-block: 64px 88px; }
 }
 @media (min-width: 64rem) {
