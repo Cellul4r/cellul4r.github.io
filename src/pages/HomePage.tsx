@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { AmbientBackground } from '../components/AmbientBackground'
@@ -28,6 +28,7 @@ export function HomePage() {
               <Link className="button button-primary" to="/projects">View Projects <ArrowRight size={18} aria-hidden="true" /></Link>
               <Link className="button button-quiet" to="/competitive-programming">Competitive Programming</Link>
             </div>
+            <Link className="hero-skills-link" to="/#skills" preventScrollReset>My Skills <ArrowDown size={17} aria-hidden="true" /></Link>
           </motion.div>
 
           <HeroIllustration />

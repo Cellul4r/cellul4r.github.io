@@ -1,14 +1,22 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { lazy, Suspense } from 'react'
-import { createMemoryRouter, RouterProvider } from 'react-router-dom'
+import { createMemoryRouter, MemoryRouter, RouterProvider } from 'react-router-dom'
+import { useReducedMotion } from 'framer-motion'
 import { beforeEach, expect, it, vi } from 'vitest'
 import { SkillsSection } from '../components/SkillsSection'
 import { SiteLayout } from '../layouts/SiteLayout'
+import { useHashScroll } from './useHashScroll'
+
+vi.mock('framer-motion', async importOriginal => ({
+  ...await importOriginal<typeof import('framer-motion')>(),
+  useReducedMotion: vi.fn(() => false),
+}))
 
 const scrollIntoView = vi.fn()
 
 beforeEach(() => {
   scrollIntoView.mockClear()
+  vi.mocked(useReducedMotion).mockReturnValue(false)
   vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
   vi.stubGlobal('IntersectionObserver', class {
     observe() {}
@@ -54,7 +62,7 @@ it.each([
     expect(scrollIntoView).not.toHaveBeenCalled()
     await app.reveal()
     await waitFor(() => expect(scrollIntoView.mock.contexts.at(-1)).toBe(document.getElementById(id)))
-    expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start', behavior: 'instant' })
+    expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start', behavior: 'smooth' })
   } finally { app.close() }
 })
 
@@ -72,6 +80,46 @@ it('preserves scrolling to the home contact section', async () => {
   const app = setup('/#contact')
   try {
     await waitFor(() => expect(scrollIntoView.mock.contexts.at(-1)).toBe(document.getElementById('contact')))
+  } finally { app.close() }
+})
+
+it('uses instant anchor scrolling when reduced motion is preferred', async () => {
+  vi.mocked(useReducedMotion).mockReturnValue(true)
+  const app = setup('/#skills')
+  try {
+    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start', behavior: 'instant' }))
+    expect(scrollIntoView).not.toHaveBeenCalledWith({ block: 'start', behavior: 'smooth' })
+  } finally { app.close() }
+})
+
+it('does not restart smooth scrolling when page animation completion retries the same anchor', () => {
+  function RetryScroll() {
+    const scroll = useHashScroll()
+    return <main id="main-content"><section id="skills">Skills</section><button onClick={() => scroll()}>Animation complete</button></main>
+  }
+  render(<MemoryRouter initialEntries={['/#skills']}><RetryScroll /></MemoryRouter>)
+  expect(scrollIntoView).toHaveBeenCalledTimes(1)
+  fireEvent.click(screen.getByRole('button', { name: 'Animation complete' }))
+  expect(scrollIntoView).toHaveBeenCalledTimes(1)
+})
+
+it('routes the navbar Skills link home, scrolls to skills, and closes the mobile menu', async () => {
+  const app = setup('/competitive-programming')
+  try {
+    await app.reveal()
+    const navigation = screen.getByRole('navigation', { name: 'Primary navigation' })
+    const menu = within(navigation).getByRole('button', { name: 'Toggle navigation' })
+    fireEvent.click(menu)
+    expect(menu.getAttribute('aria-expanded')).toBe('true')
+    const skillsLink = within(navigation).getByRole('link', { name: 'Skills' })
+    expect(skillsLink.getAttribute('href')).toBe('/#skills')
+    fireEvent.click(skillsLink)
+    await waitFor(() => expect(app.router.state.location.pathname).toBe('/'))
+    expect(app.router.state.location.hash).toBe('#skills')
+    await waitFor(() => expect(scrollIntoView.mock.contexts.at(-1)).toBe(document.getElementById('skills')))
+    expect(menu.getAttribute('aria-expanded')).toBe('false')
+    expect(within(navigation).getByRole('link', { name: 'Skills' }).getAttribute('aria-current')).toBe('location')
+    expect(within(navigation).getByRole('link', { name: 'Theerada Siri, home' }).getAttribute('aria-current')).toBeNull()
   } finally { app.close() }
 })
 

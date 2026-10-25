@@ -1,4 +1,4 @@
-import { FolderCode, Mail, Menu, Trophy, X } from 'lucide-react'
+import { CodeXml, FolderCode, Mail, Menu, Trophy, X } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnyaHomeIcon } from './AnyaHomeIcon'
@@ -14,7 +14,8 @@ export function Navbar() {
   const menuButton = useRef<HTMLButtonElement>(null)
   const location = useLocation()
   const contactActive = location.pathname === '/' && location.hash === '#contact'
-  const homeActive = location.pathname === '/' && !contactActive
+  const skillsActive = location.pathname === '/' && location.hash === '#skills'
+  const homeActive = location.pathname === '/' && !contactActive && !skillsActive
   return (
     <header className="site-header">
       <FestiveLights />
@@ -42,6 +43,10 @@ export function Navbar() {
               </NavLink>
             )
           })}
+          <Link to="/#skills" preventScrollReset onClick={() => setOpen(false)} className={`nav-skills${skillsActive ? ' active' : ''}`} aria-current={skillsActive ? 'location' : undefined}>
+            <span className="nav-link-icon" aria-hidden="true"><CodeXml size={18} /></span>
+            <span>Skills</span>
+          </Link>
           <Link to="/#contact" preventScrollReset onClick={() => setOpen(false)} className={`nav-contact${contactActive ? ' active' : ''}`} aria-current={contactActive ? 'location' : undefined}>
             <span className="nav-link-icon" aria-hidden="true"><Mail size={18} /></span>
             <span>Contact</span>

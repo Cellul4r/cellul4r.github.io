@@ -12,15 +12,15 @@ interface WorkingSkill {
 
 export const toolkitSkillGroups: SkillGroup[] = [
   { title: 'Languages', items: ['Python', 'Go', 'Java', 'C++', 'JavaScript'] },
-  { title: 'Frameworks & runtimes', items: ['FastAPI', 'Fiber', 'React', 'Vue 3', 'Streamlit', 'Node.js'] },
-  { title: 'Data & persistence', items: ['PostgreSQL', 'MongoDB', 'SQLAlchemy'] },
+  { title: 'Frameworks & Technologies', items: ['FastAPI', 'Fiber', 'React', 'Vue 3', 'Streamlit', 'Node.js'] },
+  { title: 'Databases & ORM', items: ['PostgreSQL', 'MongoDB', 'SQLAlchemy'] },
   { title: 'Tools & platforms', items: ['Git', 'GitHub', 'Docker', 'Vercel', 'Supabase'] },
 ]
 
 export const foundationSkillGroups: SkillGroup[] = [
-  { title: 'Engineering practices', items: ['Object-oriented programming', 'REST APIs', 'Relational database modeling', 'Database transactions', 'Concurrency control'] },
-  { title: 'Algorithms & data structures', items: ['Competitive programming', 'Algorithm design', 'Dynamic programming'] },
-  { title: 'Development workflows', items: ['Agile development', 'Scrum-style sprints', 'Sprint planning', 'User stories', 'Jira', 'Git collaboration'] },
+  { title: 'Software Engineering practices', items: ['Object-oriented programming', 'REST APIs', 'Relational database modeling', 'Database transactions', 'Concurrency control'] },
+  { title: 'Algorithms & data structures', items: ['Competitive programming', 'Algorithm Design and Analysis', 'Dynamic programming', 'Binary Search', 'Prefix Sum'] },
+  { title: 'Development workflows', items: ['Agile', 'Sprint planning', 'User stories', 'Jira'] },
   { title: 'Computer networking', items: ['TCP/IP', 'IPv4/IPv6', 'Subnetting', 'VLANs', 'Routing', 'Network troubleshooting'] },
 ]
 
