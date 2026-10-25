@@ -8,7 +8,7 @@ export function ContestCard({ contest }: { contest: Contest }) {
   const hasPhotos = Boolean(photos?.length)
 
   return (
-    <article className={`icpc-result ${hasPhotos ? 'icpc-result-featured' : 'icpc-result-compact'}`} aria-labelledby={`contest-${contest.id}`}>
+    <article className={`icpc-result ${hasPhotos ? 'icpc-result-featured' : 'icpc-result-compact'}`} data-feedback="surface" aria-labelledby={`contest-${contest.id}`}>
       <header className="icpc-result-heading">
         <div className="icpc-result-topline">
           <span className="icpc-year">{contest.year}</span>

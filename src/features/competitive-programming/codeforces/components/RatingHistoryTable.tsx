@@ -33,9 +33,9 @@ export function RatingHistoryTable({ points }: { points: readonly RatingPoint[] 
     <div className={styles.paginationFooter}>
       <p role="status" aria-live="polite" aria-atomic="true">Showing {formatNumber(start + 1)}–{formatNumber(start + rows.length)} of {formatNumber(newestFirst.length)} contests</p>
       {pageCount > 1 && <nav className={styles.pagination} aria-label="Rating history pages">
-        <button type="button" aria-controls={tableId} disabled={currentPage === 1} onClick={() => setPage(currentPage - 1)}>Previous</button>
+        <button type="button" data-feedback="action" aria-controls={tableId} disabled={currentPage === 1} onClick={() => setPage(currentPage - 1)}>Previous</button>
         <span>Page {formatNumber(currentPage)} of {formatNumber(pageCount)}</span>
-        <button type="button" aria-controls={tableId} disabled={currentPage === pageCount} onClick={() => setPage(currentPage + 1)}>Next</button>
+        <button type="button" data-feedback="action" aria-controls={tableId} disabled={currentPage === pageCount} onClick={() => setPage(currentPage + 1)}>Next</button>
       </nav>}
     </div>
   </details>

@@ -36,6 +36,7 @@ interface ScrollRevealProps {
   as?: 'div' | 'section' | 'header'
   id?: string
   'aria-labelledby'?: string
+  'data-feedback'?: 'surface' | 'action'
   delay?: number
   duration?: number
   distance?: number
@@ -46,7 +47,7 @@ interface ScrollRevealProps {
 
 const elements = { div: motion.div, section: motion.section, header: motion.header }
 
-export function ScrollReveal({ children, className, as = 'div', id, 'aria-labelledby': labelledBy, delay = 0, duration = .45, distance = 16, stagger = 0, fade = true, amount = .12 }: ScrollRevealProps) {
+export function ScrollReveal({ children, className, as = 'div', id, 'aria-labelledby': labelledBy, 'data-feedback': feedback, delay = 0, duration = .45, distance = 16, stagger = 0, fade = true, amount = .12 }: ScrollRevealProps) {
   const reduceMotion = useReducedMotion()
   const [focused, setFocused] = useState(false)
   const immediate = !!reduceMotion || typeof IntersectionObserver === 'undefined'
@@ -57,6 +58,7 @@ export function ScrollReveal({ children, className, as = 'div', id, 'aria-labell
       id={id}
       aria-labelledby={labelledBy}
       data-scroll-reveal=""
+      data-feedback={feedback}
       className={className}
       initial={immediate ? false : 'hidden'}
       animate={immediate || focused ? 'visible' : undefined}

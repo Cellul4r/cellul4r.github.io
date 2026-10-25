@@ -83,6 +83,14 @@
 .recentTable a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .recentTable a svg { vertical-align: middle; }
 .recentTable td { white-space: nowrap; }
+.recentTable tbody tr, .tableScroll tbody tr { transition: background-color var(--feedback-duration, .18s) ease; }
+.recentTable tbody tr:focus-within, .tableScroll tbody tr:focus-within { background: #edf2e4; }
+.dataTable summary:focus-visible { color: #873747; }
+@media (hover: hover) and (pointer: fine) {
+  .recentTable tbody tr:hover, .tableScroll tbody tr:hover { background: #edf2e4; }
+  .dataTable summary:hover { color: #873747; }
+  .stat:hover { background: #f1f3e7; }
+}
 .dataStatus { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-top: 8px; padding: 18px 20px; background: #f2ecda; border-top: 1px solid #ddcda7; color: #526a5b; font-size: var(--font-size-caption); line-height: 1.6; }
 .dataStatus p { margin: 0 0 5px; color: #315d43; }
 .dataStatus span { display: block; }

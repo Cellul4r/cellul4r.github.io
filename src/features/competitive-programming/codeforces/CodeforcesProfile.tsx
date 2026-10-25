@@ -43,7 +43,7 @@ export function CodeforcesProfile() {
       <ProfileHeader user={profile.data} />
       {profile.isError && <p className={styles.feedback} role="status">{profile.error.message}{profile.data ? ' Showing the last available profile.' : ''}</p>}
       <ProfileStats user={profile.data} contestCount={ratings.data?.length} solved={practice.data?.solved} errors={[profile.isError && !profile.data, ratings.isError && !ratings.data, practice.isError && !practice.data]} />
-      <section className={`${styles.panel} ${styles.ratingPanel}`} aria-labelledby="cf-rating-title">
+      <section className={`${styles.panel} ${styles.ratingPanel}`} data-feedback={ratings.data ? 'surface' : undefined} aria-labelledby="cf-rating-title">
         {ratings.data ? <RatingHistoryChart points={points} /> : <><h2 id="cf-rating-title">Rating history</h2><QueryFeedback error={ratings.error} blocked={profile.isError && !profile.data} label="Loading rating history…" /></>}
       </section>
       {practice.data ? <PracticeBreakdown statistics={practice.data} /> : <section className={`${styles.panel} ${styles.difficultyPanel}`} aria-labelledby="cf-practice-title"><h2 id="cf-practice-title">Practice breakdown</h2><QueryFeedback error={practice.error} blocked={profile.isError && !profile.data} label="Loading complete public submission history…" /></section>}

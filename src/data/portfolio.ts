@@ -1,4 +1,5 @@
 import type { Contest, Project } from '../types/portfolio'
+import typingQueen from '../assets/projects/typing-vs-demon/player-queen.png'
 import awardPhoto from '../assets/icpc/2025/award.webp'
 import awardPreview from '../assets/icpc/2025/award-preview.webp'
 import awardThumbnail from '../assets/icpc/2025/award-thumb.webp'
@@ -91,6 +92,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'typing-vs-demon',
+    cardDecoration: { src: typingQueen, width: 32, height: 32 },
     title: 'Typing VS Demon',
     eyebrow: 'Java action game',
     description: 'A five-lane typing action game where players type words to defeat enemies, survive escalating waves, and collect power-ups.',
@@ -232,6 +234,14 @@ export const contests: Contest[] = [
       },
     ],
   },
+]
+
+export const tutoringTopics: { topic: string; slideUrl?: string }[] = [
+  { topic: 'Mathematics' },
+  { topic: 'Binary search', slideUrl: 'https://canva.link/dtes46o06yfj4va' },
+  { topic: 'Prefix sums', slideUrl: 'https://canva.link/i9i4adpr39ueyxb' },
+  { topic: 'Recursion' },
+  { topic: 'Dynamic programming' },
 ]
 
 export const technicalAreas = [

@@ -1,0 +1,72 @@
+:root {
+  --feedback-duration: .18s;
+  --feedback-ease: cubic-bezier(.22, .61, .36, 1);
+  --feedback-border: #a77774;
+  --feedback-shadow: 0 10px 28px rgba(45, 71, 49, .12), 0 2px 6px rgba(94, 66, 47, .05);
+}
+
+:root [data-feedback] {
+  transition: translate var(--feedback-duration) var(--feedback-ease),
+    border-color var(--feedback-duration) ease,
+    box-shadow var(--feedback-duration) ease,
+    background-color var(--feedback-duration) ease;
+}
+
+[data-feedback="action"] { --feedback-lift: -3px; }
+[data-feedback="surface"] { --feedback-shadow: 0 8px 24px rgba(45, 71, 49, .09); }
+
+:root [data-feedback]:focus-within {
+  border-inline-color: var(--feedback-border);
+  border-bottom-color: var(--feedback-border);
+  box-shadow: var(--feedback-shadow);
+}
+:root [data-feedback="action"]:focus-visible {
+  translate: 0 var(--feedback-lift);
+  outline: 3px solid var(--accent-burgundy);
+  outline-offset: 4px;
+}
+.project-card[data-feedback]:focus-within { translate: 0 var(--feedback-lift); }
+.project-card:focus-within .text-link { text-decoration: underline; text-underline-offset: 4px; }
+.project-card:focus-within .text-link > svg,
+.working-skills-grid article:focus-within .skills-link > svg,
+.contact-links a:focus-visible > svg,
+.tree-tag:focus-visible .tag-action > svg { transform: translate(3px, -3px); }
+
+@media (hover: hover) and (pointer: fine) {
+  :root [data-feedback]:not(:disabled):hover {
+    border-inline-color: var(--feedback-border);
+    border-bottom-color: var(--feedback-border);
+    box-shadow: var(--feedback-shadow);
+  }
+  :root [data-feedback="action"]:not(:disabled):hover { translate: 0 var(--feedback-lift); }
+  .project-card:is(:hover, :focus-within) .text-link { text-decoration: underline; text-underline-offset: 4px; }
+  .project-card:is(:hover, :focus-within) .text-link > svg,
+  .working-skills-grid article:is(:hover, :focus-within) .skills-link > svg,
+  .contact-links a:is(:hover, :focus-visible) > svg,
+  .tree-tag:is(:hover, :focus-visible) .tag-action > svg { transform: translate(3px, -3px); }
+}
+
+:root [data-feedback="action"]:not(:disabled):active {
+  translate: 0 0;
+  box-shadow: 0 2px 7px rgba(45, 71, 49, .1);
+}
+.button:active { scale: .98; }
+.button { transition: scale var(--feedback-duration) ease, transform var(--feedback-duration) ease, border-color var(--feedback-duration) ease, background var(--feedback-duration) ease, box-shadow var(--feedback-duration) ease; }
+
+.project-card-link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.project-card:focus-within { outline: 3px solid var(--accent-burgundy); outline-offset: 4px; }
+.project-card-link:focus-visible { outline: none; }
+.project-card[data-feedback] { --feedback-border: #a76d7b; }
+.skills-learning[data-feedback], .icpc-result[data-feedback] { --feedback-border: #79986b; }
+.tvd-diagram[data-feedback], .tvd-improvements [data-feedback] { --feedback-border: #8f9f78; }
+.contact-links a > svg, .tree-tag .tag-action > svg { transition: transform var(--feedback-duration) ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root [data-feedback], .button { transition: none; }
+  :root [data-feedback="action"]:is(:hover, :focus-visible, :focus-within, :active), .button:active { translate: none; scale: none; }
+  .project-card .text-link > svg, .working-skills-grid .skills-link > svg, .contact-links a > svg, .tree-tag .tag-action > svg { transform: none !important; transition: none; }
+}
+
+@media print {
+  :root [data-feedback] { translate: none !important; box-shadow: none !important; }
+}

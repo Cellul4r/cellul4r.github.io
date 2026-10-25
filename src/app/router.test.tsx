@@ -25,6 +25,16 @@ it('immediately replaces the overview with a skeleton while the Codeforces bundl
   const view = render(<RouterProvider router={router} />)
   try {
     await screen.findByRole('heading', { name: /Think clearly/ })
+    expect(document.getElementById('icpc')).not.toBeNull()
+    expect(document.getElementById('tutoring-activity')).not.toBeNull()
+    for (const [topic, url] of [
+      ['Binary search', 'https://canva.link/dtes46o06yfj4va'],
+      ['Prefix sums', 'https://canva.link/i9i4adpr39ueyxb'],
+    ]) {
+      const slides = screen.getByRole('link', { name: `${topic} session slides on Canva (new tab)` })
+      expect(slides.getAttribute('href')).toBe(url)
+      expect(slides.closest('.topic-row')?.querySelector('strong')?.textContent).toBe(topic)
+    }
     fireEvent.click(screen.getByRole('link', { name: 'Codeforces profile' }))
     // The module promise remains unresolved: navigation must not wait for it.
     expect(router.state.location.pathname).toBe('/competitive-programming/codeforces')

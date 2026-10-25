@@ -15,7 +15,7 @@ const rankColors: Record<string, string> = {
 export function ProfileHeader({ user }: { user?: CodeforcesUser }) {
   const [failedSource, setFailedSource] = useState<string>()
   return (
-    <header className={styles.profileHeader}>
+    <header className={styles.profileHeader} data-feedback="surface">
       <div className={styles.identity}>
         <span className={styles.avatar}>
           <span aria-hidden="true">C</span>
@@ -28,7 +28,7 @@ export function ProfileHeader({ user }: { user?: CodeforcesUser }) {
           </div>
         </div>
       </div>
-      <a className={styles.externalLink} href={codeforcesProfile.url} target="_blank" rel="noopener noreferrer">View on Codeforces <ArrowUpRight size={17} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
+      <a className={styles.externalLink} data-feedback="action" href={codeforcesProfile.url} target="_blank" rel="noopener noreferrer">View on Codeforces <ArrowUpRight size={17} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
       <CodeforcesMascot />
     </header>
   )

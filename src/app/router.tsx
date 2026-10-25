@@ -10,6 +10,7 @@ import type { RouteObject } from 'react-router-dom'
 
 const CompetitiveProgrammingPage = lazy(() => import('../pages/CompetitiveProgrammingPage').then((module) => ({ default: module.CompetitiveProgrammingPage })))
 const CodeforcesPage = lazy(() => import('../pages/CodeforcesPage').then(module => ({ default: module.CodeforcesPage })))
+const TypingVsDemonPage = lazy(() => import('../pages/TypingVsDemonPage').then(module => ({ default: module.TypingVsDemonPage })))
 
 const basename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')
 export const routes: RouteObject[] = [
@@ -19,6 +20,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'projects', element: <ProjectsPage /> },
+      { path: 'projects/typing-vs-demon', element: <Suspense key="typing-vs-demon" fallback={<p className="container page" role="status">Loading Typing VS Demon case study…</p>}><TypingVsDemonPage /></Suspense> },
       { path: 'projects/:slug', element: <ProjectDetailPage /> },
       { path: 'competitive-programming', element: <Suspense key="competitive-programming" fallback={<p className="container page" role="status">Loading contest results…</p>}><CompetitiveProgrammingPage /></Suspense> },
       { path: 'competitive-programming/codeforces', element: <Suspense key="codeforces" fallback={<CodeforcesPageSkeleton />}><CodeforcesPage /></Suspense> },

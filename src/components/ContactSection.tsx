@@ -26,17 +26,17 @@ export function ContactSection() {
             <p>Have a project in mind, an interesting opportunity, or a technical idea to share? I’d love to hear from you.</p>
           </div>
           <address className="contact-links">
-            <a className="contact-email" href={`mailto:${profile.email}`}>
+            <a className="contact-email" data-feedback="action" href={`mailto:${profile.email}`}>
               <Mail size={23} aria-hidden="true" />
               <span><small>Say hello</small><strong>{profile.email}</strong></span>
               <ArrowUpRight size={20} aria-hidden="true" />
             </a>
-            <a href={profile.github} target="_blank" rel="noreferrer">
+            <a data-feedback="action" href={profile.github} target="_blank" rel="noreferrer">
               <img src={githubLogo} width={22} height={22} alt="" aria-hidden="true" />
               <span><small>Explore my code</small><strong>GitHub / Cellul4r</strong></span>
               <ArrowUpRight size={20} aria-hidden="true" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+            <a data-feedback="action" href={profile.linkedin} target="_blank" rel="noreferrer">
               <img src={linkedinLogo} width={22} height={22} alt="" aria-hidden="true" />
               <span><small>Let’s connect</small><strong>LinkedIn / Theerada Siri</strong></span>
               <ArrowUpRight size={20} aria-hidden="true" />

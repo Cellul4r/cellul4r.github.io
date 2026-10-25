@@ -51,13 +51,15 @@ it.each(['reduced motion', 'missing IntersectionObserver'])('keeps skills and li
   if (mode === 'reduced motion') vi.mocked(useReducedMotion).mockReturnValue(true)
   else vi.stubGlobal('IntersectionObserver', undefined)
   const { container } = render(<MemoryRouter><SkillsSection /></MemoryRouter>)
-  const technical = screen.getByRole('region', { name: 'Technical skills' })
+  const technical = screen.getByRole('region', { name: 'My Skills' })
   expect(technical.style.opacity).toBe('1')
   for (const category of container.querySelectorAll<HTMLElement>('.skills-category')) {
     expect(category.style.opacity).toBe('1')
     expect(category.style.transform).toBe('none')
   }
   expect(screen.getByRole('link', { name: 'Explore Noona case study' }).getAttribute('href')).toBe('/projects/noona-appointment')
-  expect(container.querySelector('.cloud-flow')).not.toBeNull()
-  expect(container.querySelectorAll('.cloud-flow circle')).toHaveLength(4)
+  const learning = screen.getByRole('region', { name: 'Where I’m growing.' })
+  expect(learning.style.opacity).toBe('1')
+  expect(learning.textContent).toContain('Currently developing')
+  expect(learning.textContent).toContain('Microsoft Azure')
 })

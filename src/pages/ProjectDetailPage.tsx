@@ -39,7 +39,7 @@ export function ProjectDetailPage() {
           <div><p className="eyebrow">02 / System view</p><h2>Architecture at a glance.</h2></div>
           <div className="architecture-flow">
             {project.architecture.map((item, index) => (
-              <div className="architecture-node" key={item.label}>
+              <div className="architecture-node" data-feedback="surface" key={item.label}>
                 <span>{String(index + 1).padStart(2, '0')}</span><strong>{item.label}</strong><p>{item.detail}</p>
                 {index < project.architecture.length - 1 && <GitBranch className="flow-icon" size={19} aria-hidden="true" />}
               </div>
@@ -50,8 +50,8 @@ export function ProjectDetailPage() {
         <motion.section className="detail-section decision-section" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">03 / Engineering decision</p><h2>A constraint worth solving.</h2></div>
           <div className="decision-grid">
-            <div><span>Challenge</span><p>{project.challenge}</p></div>
-            <div><span>Decision</span><p>{project.decision}</p></div>
+            <div data-feedback="surface"><span>Challenge</span><p>{project.challenge}</p></div>
+            <div data-feedback="surface"><span>Decision</span><p>{project.decision}</p></div>
           </div>
         </motion.section>
 

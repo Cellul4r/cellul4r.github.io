@@ -1,11 +1,20 @@
 export type Accent = 'software' | 'cloud' | 'network' | 'algorithm'
 
+export interface ProjectMedia {
+  src: string
+  width: number
+  height: number
+  alt: string
+  caption: string
+}
+
 export interface Project {
   slug: string
   title: string
   eyebrow: string
   description: string
   cardDescription?: string
+  cardDecoration?: { src: string; width: number; height: number }
   role: string
   teamSize: number
   accent: Accent
