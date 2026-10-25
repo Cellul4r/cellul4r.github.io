@@ -1,18 +1,20 @@
 import { ArrowUpRight, Users } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { Project } from '../types/portfolio'
 import { TechBadge } from './TechBadge'
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <motion.article
       className={`project-card accent-${project.accent}`}
-      initial={{ opacity: 0, y: 18 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ delay: index * 0.06 }}
-      whileHover={{ y: -10, rotate: index % 2 === 0 ? -0.8 : 0.8 }}
+      transition={{ duration: reduceMotion ? 0 : 0.3, delay: reduceMotion ? 0 : index * 0.06 }}
+      whileHover={reduceMotion ? undefined : { y: -4 }}
     >
       <span className="card-ornament" aria-hidden="true">✦</span>
       <div className="project-card-top">
@@ -20,7 +22,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="project-eyebrow">{project.eyebrow}</span>
       </div>
       <h3>{project.title}</h3>
-      <p>{project.description}</p>
+      <p>{project.cardDescription ?? project.description}</p>
       <div className="project-meta">
         <span>{project.role}</span>
         <span><Users size={14} aria-hidden="true" /> {project.teamSize}-person team</span>

@@ -5,6 +5,7 @@ export interface Project {
   title: string
   eyebrow: string
   description: string
+  cardDescription?: string
   role: string
   teamSize: number
   accent: Accent
