@@ -1,12 +1,15 @@
 import { ArrowLeft, Check, GitBranch, ShieldCheck, UserRound, Users } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { TechBadge } from '../components/TechBadge'
 import { projects } from '../data/portfolio'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
+  const reduceMotion = useReducedMotion()
   const project = projects.find((item) => item.slug === slug)
+  usePageMetadata(`${project?.title ?? 'Project not found'} | Theerada Siri`, project?.description ?? 'The requested project could not be found.')
   if (!project) return <div className="container empty-state"><p className="eyebrow">404</p><h1>Project not found.</h1><Link className="button button-primary" to="/projects">Back to projects</Link></div>
 
   return (
@@ -30,12 +33,12 @@ export function ProjectDetailPage() {
       </header>
 
       <div className="container detail-content">
-        <motion.section className="detail-section detail-overview" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
+        <motion.section className="detail-section detail-overview" initial={reduceMotion ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">01 / What it does</p><h2>From user need to working flow.</h2></div>
           <ul className="capability-list">{project.capabilities.map((capability) => <li key={capability}><Check size={17} />{capability}</li>)}</ul>
         </motion.section>
 
-        <motion.section className="detail-section" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
+        <motion.section className="detail-section" initial={reduceMotion ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">02 / System view</p><h2>Architecture at a glance.</h2></div>
           <div className="architecture-flow">
             {project.architecture.map((item, index) => (
@@ -47,7 +50,7 @@ export function ProjectDetailPage() {
           </div>
         </motion.section>
 
-        <motion.section className="detail-section decision-section" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
+        <motion.section className="detail-section decision-section" initial={reduceMotion ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">03 / Engineering decision</p><h2>A constraint worth solving.</h2></div>
           <div className="decision-grid">
             <div data-feedback="surface"><span>Challenge</span><p>{project.challenge}</p></div>
@@ -55,7 +58,7 @@ export function ProjectDetailPage() {
           </div>
         </motion.section>
 
-        <motion.section className="detail-section contribution-section" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
+        <motion.section className="detail-section contribution-section" initial={reduceMotion ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">04 / Contribution</p><h2>What I owned.</h2></div>
           <div>
             <p className="large-copy">{project.contribution}</p>
@@ -63,7 +66,7 @@ export function ProjectDetailPage() {
           </div>
         </motion.section>
 
-        <motion.section className="detail-section stack-section" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
+        <motion.section className="detail-section stack-section" initial={reduceMotion ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }}>
           <div><p className="eyebrow">05 / Toolkit</p><h2>Technology used.</h2></div>
           <div><div className="tech-list large">{project.stack.map((tech) => <TechBadge key={tech}>{tech}</TechBadge>)}</div>{project.note && <p className="project-note">Note: {project.note}</p>}</div>
         </motion.section>

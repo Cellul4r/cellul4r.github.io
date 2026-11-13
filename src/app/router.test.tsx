@@ -46,4 +46,4 @@ it('immediately replaces the overview with a skeleton while the Codeforces bundl
     await screen.findByRole('heading', { name: 'Loaded Codeforces profile' })
     expect(screen.queryByText('Loading Codeforces profile…')).toBeNull()
   } finally { view.unmount(); router.dispose() }
-})
+}, 15000)

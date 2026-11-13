@@ -1,58 +1,17 @@
-import { ArrowDown, ArrowRight } from 'lucide-react'
-import { motion, useReducedMotion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { AmbientBackground } from '../components/AmbientBackground'
-import { HeroIllustration } from '../components/HeroIllustration'
-import { ContactSection } from '../components/ContactSection'
-import { ProfileBranches } from '../components/ProfileBranches'
-import { ScrollReveal } from '../components/ScrollReveal'
-import { SkillsSection } from '../components/SkillsSection'
-import { profile } from '../data/portfolio'
-import theeradaProfile from '../assets/theerada-profile.webp'
+import { projects } from '../data/portfolio'
+import { usePageMetadata } from '../hooks/usePageMetadata'
+import { SummerCover } from '../components/summer/SummerCover'
+import { NoonaFeature } from '../components/summer/NoonaFeature'
+import { SummerSectionIndex } from '../components/summer/SummerSectionIndex'
+import { SummerContact } from '../components/summer/SummerContact'
 
 export function HomePage() {
-  const reduceMotion = useReducedMotion()
-
-  return (
-    <div className="home-page">
-      <section className="hero">
-        <AmbientBackground />
-        <div className="container hero-grid">
-          <motion.div className="hero-copy" initial={reduceMotion ? false : { y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.65 }}>
-            <p className="availability"><span aria-hidden="true" />Seeking internship opportunities</p>
-            <p className="hero-kicker">{profile.role}</p>
-            <h1><span>Theerada</span><br />Siri<i>.</i></h1>
-            <p className="hero-headline">{profile.headline}</p>
-            <p className="hero-intro">{profile.intro}</p>
-            <div className="hero-actions">
-              <Link className="button button-primary" to="/projects">View Projects <ArrowRight size={18} aria-hidden="true" /></Link>
-              <Link className="button button-quiet" to="/competitive-programming">Competitive Programming</Link>
-            </div>
-            <Link className="hero-skills-link" to="/#skills" preventScrollReset>My Skills <ArrowDown size={17} aria-hidden="true" /></Link>
-          </motion.div>
-
-          <HeroIllustration />
-        </div>
-      </section>
-
-      <section className="human-section" id="about" aria-labelledby="human-title">
-        <ScrollReveal className="container human-grid">
-          <motion.figure className="profile-polaroid" initial={false} style={{ rotate: reduceMotion ? 0 : -3 }} whileHover={reduceMotion ? undefined : { rotate: 0, scale: 1.02 }}>
-            <div className="profile-photo-wrap"><img src={theeradaProfile} alt="Theerada Siri smiling and making a peace sign" /></div>
-            <figcaption>Yep, that’s me. Nice to meet you! ✌</figcaption>
-            <span className="photo-tape" aria-hidden="true" />
-          </motion.figure>
-          <div className="human-copy">
-            <p className="eyebrow">The human behind the code</p>
-            <h2 id="human-title">Always curious.<br /><em>Never done learning.</em></h2>
-            <p>{profile.internship}</p>
-            <ProfileBranches />
-          </div>
-        </ScrollReveal>
-      </section>
-
-      <SkillsSection />
-      <ContactSection />
-    </div>
-  )
+  usePageMetadata('Theerada Siri — Summer Edition', 'The technical portfolio of Theerada Siri: software, cloud infrastructure, networks, and competitive programming. Built on curiosity. Best enjoyed warm.')
+  const feature = projects.find(project => project.slug === 'noona-appointment')
+  return <>
+    <div id="about"><SummerCover /></div>
+    {feature && <div id="work"><NoonaFeature project={feature} /></div>}
+    <SummerSectionIndex />
+    <SummerContact />
+  </>
 }

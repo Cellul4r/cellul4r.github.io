@@ -1,0 +1,140 @@
+/* Inner pages read as sections of the same newspaper. Scoped selectors also
+   keep lazy-loaded route styles from reintroducing the earlier colour scheme. */
+.summer-content-page .container { width: 100%; max-width: 100%; }
+.summer-content-page .page { padding-top: 0; }
+.summer-content-page .project-detail { padding-top: 0; }
+.summer-content-page .back-link { margin-bottom: 28px; text-transform: none; }
+.summer-content-page .detail-lead { margin-top: 24px; }
+.summer-content-page .section { padding-block: 54px; }
+.summer-content-page :is(.page-hero, .project-detail-hero) { min-height: 0; padding-block: 38px 44px; }
+.summer-content-page :is(.projects-page, .project-detail-hero, .cp-page, .tvd-case-study, .tvd-hero) { background: transparent; }
+.summer-content-page :is(.page-title-row h1, .detail-title-grid h1, .cp-hero h1, .tvd-hero h1, .articles-hero h1) {
+  color: var(--summer-ink); font-family: var(--summer-display); font-weight: 600;
+  font-size: clamp(2.75rem, 6.4vw, 5.4rem); line-height: 1.06; letter-spacing: -.055em;
+}
+.summer-content-page :is(.page-title-row h1 em, .cp-hero h1 em) { color: var(--accent-burgundy); -webkit-text-stroke: 0; }
+.summer-content-page :is(.detail-section h2, .cp-section-head h2, .tutoring-grid h2, .tvd-section h2) { font-family: var(--summer-display); font-weight: 500; color: var(--summer-ink); letter-spacing: -.04em; }
+.summer-content-page .eyebrow { margin-bottom: 18px; color: var(--accent-burgundy); font-size: .75rem; }
+.summer-content-page :is(.page-title-row p, .detail-lead, .large-copy, .highlight-list li, .decision-grid p) { color: var(--text-body); }
+.summer-content-page :is(.back-link, .detail-meta span, .detail-next p, .library-label, .project-meta span, .mono-index) { color: var(--summer-muted); }
+.summer-content-page :is(.detail-meta, .detail-meta div, .highlight-list, .highlight-list li, .detail-section) { border-color: var(--summer-rule); }
+.summer-content-page .page-hero-icon { color: var(--summer-orange); }
+.summer-content-page .library-label { padding-block: 18px; border-block: 1px solid var(--summer-ink); }
+.summer-content-page .project-library { padding-bottom: 60px; }
+.summer-content-page .project-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.summer-content-page .project-card { position: relative; min-height: 0; padding: 24px; border: 1px solid var(--summer-rule); border-radius: 2px; background: #fff7e4; box-shadow: 3px 4px 0 #d6c39a55; }
+.summer-content-page .project-card:is(:hover, :focus-within) { border-color: #9b8150; box-shadow: 5px 7px 0 #c9b38555; }
+.summer-content-page .project-card h3 { margin-block: 20px 14px; font: 500 1.85rem/1.12 var(--summer-display); color: var(--summer-ink); letter-spacing: -.035em; }
+.summer-content-page .project-card > p { margin-bottom: 24px; color: var(--text-body); line-height: 1.8; }
+.summer-content-page .project-eyebrow { color: var(--summer-muted); }
+.summer-content-page .project-meta { border-top-color: var(--summer-rule); }
+.summer-content-page .project-card .card-ornament { display: none; }
+.summer-content-page .project-card-art { display: block; margin: -24px -24px 22px; border-bottom: 1px solid var(--summer-rule); overflow: hidden; }
+.summer-content-page .project-card-art:focus-visible { outline-offset: -5px; }
+.summer-content-page .project-card-art .work-art { border-bottom: 0; }
+.summer-content-page .tech-badge { color: var(--summer-olive); border-color: #c6c5a7; background: #efedda; border-radius: 2px; font-size: .75rem; }
+.summer-content-page .text-link { color: var(--accent-burgundy); min-height: 44px; }
+.summer-content-page .button { border-radius: 2px; box-shadow: none; }
+.summer-content-page .button-primary { background: var(--summer-yellow); border-color: var(--summer-ink); color: var(--summer-ink); }
+.summer-content-page .button-primary:hover { background: #f6d271; transform: translateY(-2px); box-shadow: 3px 3px 0 var(--summer-ink); }
+.summer-content-page .button-quiet { color: var(--summer-ink); background: transparent; border-color: var(--summer-rule); }
+.summer-content-page :is(.architecture-node, .decision-grid > div, .capability-list li) { border-color: var(--summer-rule); background: #fff7e4; color: var(--text-body); border-radius: 2px; box-shadow: none; }
+.summer-content-page :is(.architecture-node > span, .architecture-node p) { color: var(--summer-muted); }
+.summer-content-page :is(.flow-icon, .decision-grid span) { color: var(--accent-amber); background: var(--summer-paper); }
+.summer-content-page .project-note { color: var(--text-body); background: #f5e5b9; }
+.summer-content-page .detail-next { padding-block: 32px; }
+
+/* Article controls and prose keep the same quiet paper foundation. */
+.summer-content-page :is(.articles-page, .article-reader-page, .article-skeleton-page) {
+  --article-paper: #fff7e4; --article-green: var(--summer-ink);
+  --article-burgundy: var(--accent-burgundy); --article-muted: var(--summer-muted);
+  --article-border: var(--summer-rule); background: transparent; padding-block: 36px 60px;
+}
+.summer-content-page .articles-hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); }
+.summer-content-page .articles-hero-copy > p:last-child { margin-top: 24px; }
+.summer-content-page .articles-library-heading h2 { font: 500 1.65rem/1.2 var(--summer-display); }
+.summer-content-page .notebook-page { border-color: var(--summer-rule); border-left-color: var(--summer-olive); background: #f8e6b7; box-shadow: 5px 5px 0 #ebd7a7, 6px 6px 0 #cbbd9b, 12px 16px 24px #6d512b12; }
+.summer-content-page .notebook-page > i { background: var(--summer-rule); }
+.summer-content-page :is(.article-filters, .article-search, .article-card, .article-empty, .article-languages, .article-series a, .article-contents nav) { border-color: var(--summer-rule); border-radius: 2px; background: #fff7e4; }
+.summer-content-page .article-filters input::placeholder { color: var(--summer-muted); }
+.summer-content-page :is(.article-filter-trigger, .article-filter-options) { border-color: var(--summer-rule); border-radius: 2px; background: #fff7e4; }
+.summer-content-page .article-filter-options > li.is-highlighted { background: #efe4c7; }
+.summer-content-page .article-filter-options > li[aria-selected="true"].is-highlighted { background: #f4dfa8; }
+.summer-content-page .article-card { border-top-color: var(--summer-orange); }
+.summer-content-page .article-card-thai { border-top-color: var(--summer-olive); }
+.summer-content-page .article-card h3 { margin-block: 18px 12px; font-family: var(--summer-display); color: var(--summer-ink); }
+.summer-content-page .article-card h3:lang(th) { font-family: var(--font-sans); }
+.summer-content-page .article-card-summary { margin-bottom: 28px; }
+.summer-content-page .article-card-bottom { border-color: var(--summer-rule); }
+.summer-content-page .article-topics > span { color: var(--summer-olive); background: #ebe9d1; border-radius: 2px; }
+.summer-content-page .article-reader-header h1 { color: var(--summer-ink); font-family: var(--summer-display); }
+.summer-content-page .article-reader:lang(th) .article-reader-header h1 { font-family: var(--font-sans); }
+.summer-content-page .article-reader-summary { margin-block: 20px 24px; }
+.summer-content-page .article-reader-meta { margin-bottom: 20px; }
+.summer-content-page .article-languages .article-language-link[aria-current="true"] { color: var(--summer-ink); border-color: #cdb47a; background: #f4dfa8; }
+.summer-content-page .article-prose p { margin-bottom: 1.4em; }
+.summer-content-page .article-prose h2 { margin-block: 2em .8em; font-family: var(--summer-display); font-weight: 500; }
+.summer-content-page .article-prose h3 { margin-block: 1.7em .7em; }
+.summer-content-page .article-prose:lang(th) :is(h2, h3) { font-family: var(--font-sans); font-weight: 650; }
+.summer-content-page .article-prose > :first-child { margin-top: 0; }
+.summer-content-page .article-prose :is(blockquote, pre, th) { background: #f0e6c9; }
+.summer-content-page .article-prose code { background: #ece0c0; }
+.summer-content-page .article-prose pre code { background: transparent; }
+.summer-content-page .article-prose blockquote p:last-child { margin-bottom: 0; }
+.summer-content-page :is(.article-draft-note, .article-draft) { background: #f5e5b9; color: #70551e; }
+.summer-content-page .article-contents-title { margin-bottom: 12px; }
+.summer-content-page .article-reader .article-prose :is(h2[id], h3[id], h4[id]),
+.summer-content-page .cp-page :is(#icpc, #tutoring-activity),
+.summer-content-page .tvd-case-study :is(section[id], h2[id]) { scroll-margin-top: var(--summer-header-offset); }
+
+/* Competition results retain their photographs and interactive algorithm demo. */
+.summer-content-page .cp-page .cp-hero { padding-block: 38px 44px; background: transparent; border-color: var(--summer-rule); }
+.summer-content-page .cp-page .cp-hero::before { display: none; }
+.summer-content-page .cp-page .cp-hero .cp-introduction h1 { font-size: clamp(2.75rem, 5vw, 4.4rem); }
+.summer-content-page .cp-page .cp-hero p:not(.eyebrow) { color: var(--text-body); }
+.summer-content-page .cp-page .icpc-achievements { padding-block: 48px; }
+.summer-content-page .icpc-result { border-color: var(--summer-rule); border-radius: 2px; background: #fff7e4; box-shadow: 3px 4px 0 #d6c39a44; }
+.summer-content-page .icpc-result-compact { background: #ebe9d1; }
+.summer-content-page :is(.icpc-result h3, .icpc-standing strong) { font-family: var(--summer-display); }
+.summer-content-page .icpc-standing strong { color: var(--summer-olive); }
+.summer-content-page .icpc-award { border-radius: 2px; background: #f5e3b0; }
+.summer-content-page .contest-gallery-main { border-color: var(--summer-rule); background: var(--summer-paper); }
+.summer-content-page .contest-gallery-main figcaption { color: var(--summer-muted); }
+.summer-content-page .contest-gallery-all { border-radius: 2px; background: #e8e6cd; border-color: #b7b995; color: #434d34; }
+.summer-content-page .contest-gallery-all:hover { background: #dedfc0; }
+.summer-content-page .cp-page .cp-section-head h2 { font-family: var(--summer-display); font-size: clamp(2rem, 4vw, 3rem); }
+.summer-content-page .cp-page .tutoring-section { padding-block: 48px; border-color: var(--summer-rule); background: transparent; }
+.summer-content-page .tutoring-grid h2 { font-size: clamp(2.3rem, 4vw, 3.5rem); line-height: 1.1; }
+.summer-content-page .topic-board { border-color: var(--summer-rule); border-radius: 2px; background: #fff7e4; box-shadow: 5px 6px 0 #d6c39a55; }
+.summer-content-page .cp-codeforces-link { background: #e8e6cd; border-color: #b7b995; color: #434d34; border-radius: 2px; }
+.summer-content-page .cp-codeforces-link:hover { background: #dedfc0; }
+.summer-content-page .cp-page .topic-slide-link { background: #f6dfbc; color: var(--accent-burgundy); border-color: #ceae82; border-radius: 2px; }
+.summer-content-page .topic-row, .summer-content-page .topic-board-head, .summer-content-page .topic-board-foot { border-color: var(--summer-rule); }
+.summer-content-page .topic-row span, .summer-content-page .topic-row svg, .summer-content-page .topic-board-head { color: var(--summer-muted); }
+.summer-content-page .tvd-case-study { --tvd-border: var(--summer-rule); padding-top: 0; }
+.summer-content-page .tvd-hero { padding-block: 36px; }
+.summer-content-page .tvd-case-study .button { border-radius: 2px; }
+.summer-content-page .tvd-outline { background: #efe4c7; border-color: var(--summer-rule); }
+.summer-content-page .tvd-section h2 { margin-bottom: 24px; }
+.summer-content-page .tvd-section-heading h2 { margin-bottom: 0; }
+.summer-content-page :is(.tvd-wave-intro h3, .tvd-decision h3, .empty-state h1) { font-family: var(--summer-display); }
+
+@media (min-width: 48rem) {
+  .summer-content-page .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summer-content-page .page-title-row { gap: 28px; }
+  .summer-content-page .article-filters { grid-template-columns: minmax(0, 1fr) 200px 160px; }
+}
+@media (min-width: 64rem) {
+  .summer-content-page .section { padding-block: 68px; }
+  .summer-content-page .detail-section { padding-block: 64px; }
+  .summer-content-page .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .summer-content-page .project-card { padding: 22px; }
+  .summer-content-page .project-card-art { margin: -22px -22px 20px; }
+  .summer-content-page .project-card h3 { font-size: 1.65rem; }
+  .summer-content-page .project-card > p { font-size: .9375rem; }
+  .summer-content-page .article-reading-layout { grid-template-columns: 210px minmax(0, 1fr); gap: 40px; }
+  .summer-content-page .article-contents nav { top: var(--summer-header-offset); max-height: calc(100dvh - var(--summer-header-offset) - 24px); padding: 0 20px 0 0; border: 0; border-right: 1px solid var(--summer-rule); background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .summer-content-page .button-primary:hover { transform: none; }
+}

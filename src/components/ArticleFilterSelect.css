@@ -1,0 +1,20 @@
+.article-filter-select { position: relative; min-width: 0; }
+.article-filter-trigger { display: flex; align-items: center; width: 100%; min-height: 48px; gap: 10px; padding: 10px 12px; border: 1px solid #d6dfce; border-radius: 7px; background: #fffef9; color: var(--ink); text-align: left; font: inherit; font-size: 1rem; cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }
+.article-filter-trigger > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.article-filter-trigger > svg { flex-shrink: 0; color: var(--article-muted); }
+.article-filter-trigger[aria-expanded="true"] { border-color: var(--article-burgundy); background: #fffdf6; box-shadow: 0 0 0 2px rgba(135,55,71,.08); }
+.article-filter-trigger:focus-visible { outline: 2px solid var(--article-burgundy); outline-offset: 3px; }
+.article-filter-chevron { transition: transform .2s ease; }
+.article-filter-trigger[aria-expanded="true"] .article-filter-chevron { transform: rotate(180deg); }
+.article-filter-options { position: absolute; top: calc(100% + 8px); left: 0; z-index: 10; min-width: 100%; width: 100%; max-width: calc(100vw - 64px); max-height: min(280px, 45dvh); overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 6px; list-style: none; border: 1px solid #d6dfce; border-radius: 10px; background: #fffdf6; box-shadow: 0 12px 28px rgba(37,76,59,.12), 0 2px 5px rgba(37,76,59,.04); animation: article-filter-open .16s ease-out; }
+.article-filter-options > li { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 10px 12px; border-radius: 5px; color: var(--ink); font-size: .9375rem; line-height: 1.5; cursor: pointer; }
+.article-filter-options > li > svg { flex-shrink: 0; visibility: hidden; color: var(--article-burgundy); }
+.article-filter-options > li > svg.is-selected { visibility: visible; }
+.article-filter-options > li[aria-selected="true"] { font-weight: 600; color: var(--article-burgundy); }
+.article-filter-options > li.is-highlighted { background: #edf2e7; }
+.article-filter-options > li[aria-selected="true"].is-highlighted { background: #f4e9e4; }
+@keyframes article-filter-open { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
+@media (hover: hover) and (pointer: fine) { .article-filter-trigger:hover { border-color: #9caf99; background: #fffdf6; } }
+@media (prefers-reduced-motion: reduce) { .article-filter-trigger, .article-filter-chevron { transition: none; }.article-filter-options { animation: none; } }
+
+.article-filter-options > li > span { min-width: 0; overflow-wrap: anywhere; }

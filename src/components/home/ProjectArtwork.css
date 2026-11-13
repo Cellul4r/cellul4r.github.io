@@ -1,0 +1,12 @@
+.work-art { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 600 / 380; overflow: hidden; }
+.work-art > svg { width: 100%; height: 100%; }
+.work-art-noona { background: #f2e2b9; }
+.work-art-finance { background: #efd7b7; }
+.work-art-game { background: #dfe1bf; padding: 24px 25px 38px; }
+.work-art-caption { position: absolute; bottom: 10px; left: 14px; right: 8px; font: 400 .625rem/1.5 var(--font-sans); color: #68604e; }
+.game-window { width: 100%; height: 100%; border: 2px solid #434d34; border-radius: 3px; box-shadow: 6px 6px 0 #aeb58b; overflow: hidden; transform: rotate(-3deg); background: #2d2a22; }
+.game-window-bar { display: flex; align-items: center; gap: 4px; padding: 7px 10px; color: #fbf1d8; font-size: .5rem; }
+.game-window-bar > i { width: 4px; height: 4px; border-radius: 50%; background: #e65b35; }
+.game-window-bar > span { margin-left: auto; }
+.game-window > img { display: block; width: 100%; height: calc(100% - 23px); object-fit: cover; object-position: center; }
+.game-player-sticker { position: absolute; width: 46px; height: 46px; image-rendering: pixelated; right: 13px; bottom: 23px; filter: drop-shadow(3px 3px 0 #fbf1d8); }

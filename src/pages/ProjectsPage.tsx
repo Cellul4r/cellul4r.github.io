@@ -1,14 +1,14 @@
 import { ArrowDownRight } from 'lucide-react'
 import { ProjectCard } from '../components/ProjectCard'
-import { SeasonalFoliage } from '../components/decorations/SeasonalFoliage'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 import { projects } from '../data/portfolio'
 import './ProjectsPage.css'
 
 export function ProjectsPage() {
+  usePageMetadata('Projects | Theerada Siri', 'Three completed team projects: event registration, an LLM financial-tool prototype, and a Java typing game.')
   return (
     <div className="page projects-page">
       <header className="page-hero container">
-        <SeasonalFoliage variant="full" className="projects-hero-foliage" />
         <p className="eyebrow">Project library / {String(projects.length).padStart(2, '0')} builds</p>
         <div className="page-title-row">
           <h1>Things I’ve<br /><em>helped build.</em></h1>

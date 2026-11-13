@@ -1,58 +1,25 @@
-import { CodeXml, FolderCode, Mail, Menu, Trophy, X } from 'lucide-react'
-import { useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnyaHomeIcon } from './AnyaHomeIcon'
-import { FestiveLights } from './FestiveLights'
-
-const links = [
-  { to: '/projects', label: 'Projects', icon: FolderCode, className: 'nav-projects' },
-  { to: '/competitive-programming', label: 'Competitive Programming', icon: Trophy, className: 'nav-competitive' },
-]
+import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { summerSections } from '../data/summer'
 
 export function Navbar() {
-  const [open, setOpen] = useState(false)
-  const menuButton = useRef<HTMLButtonElement>(null)
   const location = useLocation()
-  const contactActive = location.pathname === '/' && location.hash === '#contact'
-  const skillsActive = location.pathname === '/' && location.hash === '#skills'
-  const homeActive = location.pathname === '/' && !contactActive && !skillsActive
-  return (
-    <header className="site-header">
-      <FestiveLights />
-      <nav className="nav-shell" aria-label="Primary navigation" onKeyDown={(event) => {
-        if (event.key === 'Escape' && open) {
-          setOpen(false)
-          menuButton.current?.focus()
-        }
-      }}>
-        <Link to="/" className={`brand${homeActive ? ' is-current' : ''}`} onClick={() => setOpen(false)} aria-label="Theerada Siri, home" aria-current={homeActive ? 'page' : undefined}>
-          <AnyaHomeIcon />
-          <span className="brand-label">Home</span>
-        </Link>
-        <button ref={menuButton} className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>
-          <span className="sr-only">Toggle navigation</span>
-          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </button>
-        <div id="mobile-navigation" className={`nav-links ${open ? 'is-open' : ''}`}>
-          {links.map((link) => {
-            const Icon = link.icon
-            return (
-              <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)} className={({ isActive }) => `${link.className}${isActive ? ' active' : ''}`}>
-                <span className="nav-link-icon" aria-hidden="true"><Icon size={18} /></span>
-                <span>{link.label}</span>
-              </NavLink>
-            )
-          })}
-          <Link to="/#skills" preventScrollReset onClick={() => setOpen(false)} className={`nav-skills${skillsActive ? ' active' : ''}`} aria-current={skillsActive ? 'location' : undefined}>
-            <span className="nav-link-icon" aria-hidden="true"><CodeXml size={18} /></span>
-            <span>Skills</span>
-          </Link>
-          <Link to="/#contact" preventScrollReset onClick={() => setOpen(false)} className={`nav-contact${contactActive ? ' active' : ''}`} aria-current={contactActive ? 'location' : undefined}>
-            <span className="nav-link-icon" aria-hidden="true"><Mail size={18} /></span>
-            <span>Contact</span>
-          </Link>
-        </div>
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 8)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    return () => window.removeEventListener('scroll', update)
+  }, [])
+  const contact = location.pathname === '/' && location.hash === '#contact'
+  return <header className={`summer-theme-header${scrolled ? ' is-scrolled' : ''}`}>
+    <div className="summer-theme-header-inner">
+      <Link to="/" className="summer-brand" aria-label="Theerada Siri, home" aria-current={location.pathname === '/' && !location.hash ? 'page' : undefined}><span aria-hidden="true">TS.</span>Theerada Siri</Link>
+      <span className="summer-theme-label">The summer edition</span>
+      <nav aria-label="Primary navigation">
+        {summerSections.map(section => <Link key={section.to} to={section.to} aria-current={location.pathname === section.to || location.pathname.startsWith(`${section.to}/`) ? 'page' : undefined}>{section.title}</Link>)}
+        <Link to="/#contact" preventScrollReset aria-current={contact ? 'location' : undefined}>Contact</Link>
       </nav>
-    </header>
-  )
+    </div>
+  </header>
 }

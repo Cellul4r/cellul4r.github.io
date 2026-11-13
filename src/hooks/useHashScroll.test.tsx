@@ -103,23 +103,19 @@ it('does not restart smooth scrolling when page animation completion retries the
   expect(scrollIntoView).toHaveBeenCalledTimes(1)
 })
 
-it('routes the navbar Skills link home, scrolls to skills, and closes the mobile menu', async () => {
+it('routes the navbar Contact link home and scrolls to contact', async () => {
   const app = setup('/competitive-programming')
   try {
     await app.reveal()
     const navigation = screen.getByRole('navigation', { name: 'Primary navigation' })
-    const menu = within(navigation).getByRole('button', { name: 'Toggle navigation' })
-    fireEvent.click(menu)
-    expect(menu.getAttribute('aria-expanded')).toBe('true')
-    const skillsLink = within(navigation).getByRole('link', { name: 'Skills' })
-    expect(skillsLink.getAttribute('href')).toBe('/#skills')
-    fireEvent.click(skillsLink)
+    const contactLink = within(navigation).getByRole('link', { name: 'Contact' })
+    expect(contactLink.getAttribute('href')).toBe('/#contact')
+    fireEvent.click(contactLink)
     await waitFor(() => expect(app.router.state.location.pathname).toBe('/'))
-    expect(app.router.state.location.hash).toBe('#skills')
-    await waitFor(() => expect(scrollIntoView.mock.contexts.at(-1)).toBe(document.getElementById('skills')))
-    expect(menu.getAttribute('aria-expanded')).toBe('false')
-    expect(within(navigation).getByRole('link', { name: 'Skills' }).getAttribute('aria-current')).toBe('location')
-    expect(within(navigation).getByRole('link', { name: 'Theerada Siri, home' }).getAttribute('aria-current')).toBeNull()
+    expect(app.router.state.location.hash).toBe('#contact')
+    await waitFor(() => expect(scrollIntoView.mock.contexts.at(-1)).toBe(document.getElementById('contact')))
+    expect(within(navigation).getByRole('link', { name: 'Contact' }).getAttribute('aria-current')).toBe('location')
+    expect(screen.getByRole('link', { name: 'Theerada Siri, home' }).getAttribute('aria-current')).toBeNull()
   } finally { app.close() }
 })
 

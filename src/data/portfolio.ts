@@ -1,4 +1,4 @@
-import type { Contest, Project } from '../types/portfolio'
+import type { Contest, Profile, Project } from '../types/portfolio'
 import typingQueen from '../assets/projects/typing-vs-demon/player-queen.png'
 import awardPhoto from '../assets/icpc/2025/award.webp'
 import awardPreview from '../assets/icpc/2025/award-preview.webp'
@@ -34,11 +34,11 @@ import regional2025Venue from '../assets/icpc/2025-bangkok-regional/cmu-venue.we
 import regional2025VenuePreview from '../assets/icpc/2025-bangkok-regional/cmu-venue-preview.webp'
 import regional2025VenueThumbnail from '../assets/icpc/2025-bangkok-regional/cmu-venue-thumb.webp'
 
-export const profile = {
+export const profile: Profile = {
   name: 'Theerada Siri',
   role: 'Computer Science Student',
   headline: 'Software • Cloud • Networks • Competitive Programming',
-  intro: 'I’m a third-year Computer Science student interested in software engineering, cloud infrastructure, and computer networks. I enjoy building practical applications, exploring how systems work, and solving algorithmic challenges. Team projects and ICPC competitions have strengthened my problem-solving and collaboration skills.',
+  intro: 'I enjoy building software, understanding the infrastructure behind it, and exploring computer networks. Team projects and competitive programming are how I put that curiosity into practice.',
   internship: 'I’m currently seeking internship opportunities where I can contribute to real projects, deepen my technical knowledge, and learn from experienced engineers.',
   github: 'https://github.com/Cellul4r',
   email: 'theerada.siri24@gmail.com',

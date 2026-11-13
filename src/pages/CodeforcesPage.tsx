@@ -2,10 +2,12 @@ import { lazy, Suspense } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { CodeforcesProfile } from '../features/competitive-programming/codeforces/CodeforcesProfile'
 import { codeforcesQueryClient } from '../features/competitive-programming/codeforces/queryClient'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 
 const Devtools = import.meta.env.DEV ? lazy(() => import('@tanstack/react-query-devtools').then(module => ({ default: module.ReactQueryDevtools }))) : null
 
 export function CodeforcesPage() {
+  usePageMetadata('Codeforces | Theerada Siri', 'Contest rating history and programming practice from Theerada Siri’s public Codeforces profile.')
   return <QueryClientProvider client={codeforcesQueryClient}>
     <CodeforcesProfile />
     {Devtools && <Suspense fallback={null}><Devtools initialIsOpen={false} /></Suspense>}

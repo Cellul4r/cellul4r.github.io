@@ -5,8 +5,9 @@ import { animate, useMotionValue, useReducedMotion } from 'framer-motion'
 const DRAG_THRESHOLD = 6
 const DIZZY_AFTER_MS = 1000
 
-export function useAnyaInteraction(pictureCount: number) {
-  const reduceMotion = useReducedMotion()
+export function useAnyaInteraction(pictureCount: number, reducedMotionOverride?: boolean) {
+  const systemReducedMotion = useReducedMotion()
+  const reduceMotion = reducedMotionOverride ?? systemReducedMotion
   const rotation = useMotionValue(0)
   const [picture, setPicture] = useState(0)
   const [dizzy, setDizzy] = useState(false)

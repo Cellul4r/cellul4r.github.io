@@ -1,5 +1,17 @@
 export type Accent = 'software' | 'cloud' | 'network' | 'algorithm'
 
+export interface Profile {
+  name: string
+  role: string
+  headline: string
+  intro: string
+  internship: string
+  github: string
+  email: string
+  linkedin: string
+  resumeUrl?: string
+}
+
 export interface ProjectMedia {
   src: string
   width: number

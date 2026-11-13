@@ -28,9 +28,9 @@ it('provides native, focusable disclosures with all foundation skills preserved'
   renderSkills()
   const foundations = screen.getByRole('region', { name: 'Engineering foundations' })
   const expected = [
-    ['Engineering practices', 'Object-oriented programming · REST APIs · Relational database modeling · Database transactions · Concurrency control'],
-    ['Algorithms & data structures', 'Competitive programming · Algorithm design · Dynamic programming'],
-    ['Development workflows', 'Agile development · Scrum-style sprints · Sprint planning · User stories · Jira · Git collaboration'],
+    ['Software Engineering practices', 'Object-oriented programming · REST APIs · Relational database modeling · Database transactions · Concurrency control'],
+    ['Algorithms & data structures', 'Competitive programming · Algorithm Design and Analysis · Dynamic programming · Binary Search · Prefix Sum'],
+    ['Development workflows', 'Agile · Sprint planning · User stories · Jira'],
     ['Computer networking', 'TCP/IP · IPv4/IPv6 · Subnetting · VLANs · Routing · Network troubleshooting'],
   ]
   expected.forEach(([title, content], index) => {

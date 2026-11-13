@@ -49,42 +49,6 @@ p { text-wrap: pretty; }
 .page { padding-top: 72px; }
 .eyebrow { margin: 0 0 18px; color: var(--gold); font-family: var(--font-sans); font-size: var(--font-size-caption); font-weight: 600; letter-spacing: .03em; text-transform: none; }
 
-.site-header { position: fixed; z-index: 50; top: 0; width: 100%; border-bottom: 1px solid rgba(241,239,229,.08); background: rgba(8,17,13,.78); backdrop-filter: blur(16px); }
-.festive-lights { position: absolute; inset: 0 0 auto; z-index: 1; display: flex; justify-content: space-around; height: 10px; pointer-events: none; }
-.festive-lights::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: rgba(31,87,61,.25); }
-.bulb { position: relative; width: 7px; height: 10px; border-radius: 2px 2px 50% 50%; filter: drop-shadow(0 0 5px currentColor); animation: twinkle 2.2s ease-in-out infinite; }
-.bulb::before { content: ''; position: absolute; top: -3px; left: 2px; width: 3px; height: 4px; background: #504a3f; }
-.bulb-red { color: var(--red); background: var(--red); }.bulb-gold { color: #f2bb3d; background: #f2bb3d; }.bulb-green { color: #35a466; background: #35a466; }.bulb-cream { color: #fffdf5; background: #fffdf5; }
-@keyframes twinkle { 0%, 100% { opacity: .45; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.12); } }
-.nav-shell { position: relative; z-index: 2; width: calc(100% - 24px); height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
-.brand { position: relative; display: inline-flex; min-height: 48px; flex-shrink: 0; gap: 6px; align-items: center; padding: 0 12px 0 2px; border: 1px solid transparent; border-radius: 10px; color: #254c3b; transition: background .15s, border-color .15s; }
-.brand-label { font-size: var(--font-size-control); font-weight: 650; }
-.brand:hover, .brand.is-current { border-color: rgba(41,130,91,.2); background: #eaf3e9; }
-.anya-home-icon { position: relative; display: block; flex-shrink: 0; width: 44px; height: 44px; }
-.anya-home-icon img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
-.anya-face-normal, .anya-face-goofy { transition: opacity 120ms ease; }
-.anya-face-normal { opacity: 1; }
-.anya-face-goofy { opacity: 0; }
-.brand:focus-visible .anya-face-normal { opacity: 0; }
-.brand:focus-visible .anya-face-goofy { opacity: 1; }
-@media (hover: hover) and (pointer: fine) {
-  .brand:hover .anya-face-normal { opacity: 0; }
-  .brand:hover .anya-face-goofy { opacity: 1; }
-}
-.nav-links { position: absolute; inset: 72px -12px auto; display: none; flex-direction: column; align-items: stretch; gap: 6px; max-height: calc(100dvh - 72px); overflow-y: auto; padding: 16px; border-bottom: 1px solid var(--line); background: #fffaf0; box-shadow: 0 16px 35px rgba(53,88,68,.12); }
-.nav-links.is-open { display: flex; }
-.nav-links a { position: relative; display: inline-flex; min-height: 48px; gap: 10px; align-items: center; padding: 12px 16px; border: 1px solid transparent; border-radius: 10px; color: #365343; font-size: var(--font-size-control); font-weight: 600; transition: background .15s, border-color .15s, color .15s; }
-.nav-links a > span { min-width: 0; }
-.nav-projects { --nav-accent: #953c50; --nav-tint: #fae9ec; --nav-border: #e6b9c3; }
-.nav-competitive { --nav-accent: #885609; --nav-tint: #fbefd2; --nav-border: #ddc58e; }
-.nav-contact { --nav-accent: #236746; --nav-tint: #e8f2e7; --nav-border: #b3cfb8; }
-.nav-skills { --nav-accent: #355c42; --nav-tint: #edf2e4; --nav-border: #becfb1; }
-.nav-link-icon { display: inline-flex; width: 30px; height: 30px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 7px; color: var(--nav-accent); background: var(--nav-tint); }
-.nav-links a:hover, .nav-links a.active { color: var(--nav-accent); border-color: var(--nav-border); background: var(--nav-tint); }
-.nav-links a.active::after { content: ''; position: absolute; left: 56px; right: auto; bottom: 8px; width: 28px; height: 2px; border-radius: 1px; background: var(--nav-accent); }
-.brand:focus-visible, .nav-links a:focus-visible, .menu-button:focus-visible { outline: 2px solid #943e4a; outline-offset: 3px; border-radius: 6px; }
-.menu-button { display: block; flex-shrink: 0; width: 48px; height: 48px; border: 0; color: var(--paper); background: none; padding: 12px; cursor: pointer; }
-
 .hero { position: relative; min-height: 0; height: auto; overflow: hidden; display: flex; align-items: center; padding: 120px 0 40px; background: radial-gradient(circle at 78% 42%, rgba(194,46,62,.12), transparent 34%), linear-gradient(145deg, #07140d 0%, #0b2116 58%, #160d0f 100%); }
 .ambient { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .ambient-orb { position: absolute; filter: blur(1px); border-radius: 50%; }
@@ -400,9 +364,6 @@ p { text-wrap: pretty; }
 
 body { color: var(--ink); background: #fff9ee; }
 .eyebrow, .text-link { color: var(--accent-amber); }
-.site-header { border-bottom-color: rgba(31,87,61,.14); background: rgba(255,250,240,.9); box-shadow: 0 5px 24px rgba(40,79,57,.07); }
-.festive-lights::before { background: rgba(31,87,61,.25); }
-.menu-button { color: #173b2c; }
 
 .hero { background: radial-gradient(circle at 76% 42%, rgba(135,55,71,.12), transparent 32%), radial-gradient(circle at 8% 88%, rgba(83,157,108,.14), transparent 30%), #fff4dc; }
 .ambient-green { background: radial-gradient(circle, rgba(88,181,126,.24), transparent 68%); }
@@ -528,11 +489,6 @@ body { color: var(--ink); background: #fff9ee; }
   .container { width: min(1160px, calc(100% - 48px)); }
   .section { padding-block: 96px; }
   .human-section { padding-block: 64px; }
-  .nav-shell { width: calc(100% - 32px); }
-  .menu-button { display: none; }
-  .nav-links, .nav-links.is-open { position: static; display: flex; flex-direction: row; align-items: center; gap: 8px; max-height: none; overflow: visible; padding: 0; border: 0; background: transparent; box-shadow: none; }
-  .nav-links a { padding: 7px 12px; }
-  .nav-links a.active::after { left: 52px; right: 12px; bottom: 5px; width: auto; }
   .hero { padding-top: 140px; }
   .hero-illustration { height: 580px; }
   .hero h1 { font-size: clamp(4.6rem, 7.6vw, 7.5rem); }

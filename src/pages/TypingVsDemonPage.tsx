@@ -5,8 +5,10 @@ import { CaseStudyFigure } from '../components/projects/CaseStudyFigure'
 import { GameStateDiagram, WordObjectDiagram } from '../components/projects/TypingVsDemonDiagrams'
 import { typingVsDemon as project, typingVsDemonMedia as media } from '../data/typingVsDemon'
 import './TypingVsDemonPage.css'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 
 export function TypingVsDemonPage() {
+  usePageMetadata('Typing VS Demon | Theerada Siri', project.description)
   return (
     <article className="tvd-case-study">
       <header className="tvd-hero">

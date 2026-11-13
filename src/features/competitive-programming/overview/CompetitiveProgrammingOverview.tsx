@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ContestCard } from '../contests/ContestCard'
 import { MatchingDemo } from '../matching/MatchingDemo'
 import { ScrollReveal } from '../../../components/ScrollReveal'
-import { SeasonalFoliage } from '../../../components/decorations/SeasonalFoliage'
 import { contests, tutoringTopics } from '../../../data/portfolio'
 import codeforcesLogo from '../../../assets/brands/codeforces.png'
 import './overview.css'
@@ -14,7 +13,6 @@ export function CompetitiveProgrammingOverview() {
   return (
     <div className="page cp-page">
       <header className="cp-hero">
-        <div className="cp-hero-foliage" aria-hidden="true"><SeasonalFoliage variant="full" /></div>
         <div className="container cp-introduction">
           <div>
             <p className="eyebrow">Competitive programming</p>
@@ -38,7 +36,6 @@ export function CompetitiveProgrammingOverview() {
       </section>
 
       <section id="tutoring-activity" className="section tutoring-section" aria-labelledby="tutoring-title">
-        <SeasonalFoliage variant="sprig" className="cp-tutoring-foliage" />
         <div className="container tutoring-grid">
           <div>
             <p className="eyebrow">Beyond competition</p>

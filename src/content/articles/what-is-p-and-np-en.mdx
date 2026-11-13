@@ -1,0 +1,131 @@
+import { QueensDemo } from '../../features/articles/p-np/QueensDemo'
+import { QueensVerifier } from '../../features/articles/p-np/QueensVerifier'
+import { NamesDemo } from '../../features/articles/p-np/NamesDemo'
+import { GrowthChart } from '../../features/articles/p-np/GrowthChart'
+import { MstDemo } from '../../features/articles/p-np/MstDemo'
+import { BoardSizes, DecisionFigure, CertificateFigure, ClassRelationship, ReductionFigure } from '../../features/articles/p-np/ConceptFigures'
+
+## Introduction
+
+Hi! Today I want to share how I understand P and NP, a topic that confused me when I was studying Algorithm Design and Analysis. This article brings together what I learned and explains it through examples. Hopefully it helps if you are puzzling over the same ideas!
+
+In this first part, we will build an intuition for P and NP rather than dive into formal proofs. NP-hardness, NP-completeness, and how to prove them will come in Part 2. Before the definitions, let's start with a chessboard.
+
+## Start with a queen puzzle
+
+Imagine a 5×5 chessboard with a few queens already placed. Can we add queens until there are five, without any pair sharing a row, column, or diagonal? The original queens must stay in their positions. This version is called **N-Queens Completion**, because we are completing a partially filled board.
+
+<QueensDemo language="en" />
+
+Finding a placement ourselves might involve trying several positions. But what if someone hands us a completed board? We can immediately check whether the original queens are still there and whether any pair shares a row, column, or diagonal.
+
+That difference between **finding a placement** and **checking a proposed placement** is a useful starting point for P and NP. One important note: seeing that a method we tried is slow does not prove that no faster method exists. Keep that distinction in mind as we go.
+
+## What is a decision problem?
+
+Notice that the question did not ask us to list every valid placement. It only asked: **“Starting from the given queens, can we complete the board with five queens satisfying the rules?”** The answer is either Yes or No. A question of this kind is a **decision problem**.
+
+<DecisionFigure language="en" />
+
+Having only two possible answers does not necessarily make a question easy to answer. To establish Yes, we might find one valid completion. To establish No, we need a sufficient reason that no completion works. Next, we will look at how the work needed to decide an answer changes as the input gets larger.
+
+## How do we measure whether an algorithm is fast?
+
+If we grow the 5×5 board into larger and larger boards, a method that works quickly on the small example may have much more work to do. When analysing an algorithm, we therefore look beyond the seconds taken by one example. We ask **how its number of steps grows as the input gets larger**. This will help us understand polynomial time in the definitions of P and NP.
+
+<BoardSizes language="en" />
+
+Suppose a list contains `n` names, and we count them by scanning from beginning to end. With 10 entries we inspect 10 entries; with 100 entries we inspect 100. The number of inspections grows in proportion to the list length. We describe this scan as taking `O(n)` time, where `n` is the number of list entries in this example.
+
+The notation `O(...)` is **Big-O notation**. It expresses an asymptotic upper bound on the growth of running time, leaving out details such as constant factors. For example, a method taking roughly `3n + 5` steps can still be described as `O(n)` because the growth remains linear.
+
+<NamesDemo language="en" mode="count" />
+
+What if we compare every distinct pair of names to check for duplicates instead? There are `n(n − 1) / 2` pairs. Assuming each name comparison takes constant time, this method takes `O(n²)` time.
+
+Both `O(n)` and `O(n²)` are examples of **polynomial time**. A polynomial-time running time is bounded by `O(nᵏ)` for some constant `k`; `O(n³)` qualifies too. The exponent must be fixed rather than grow with the input size. We will use this idea to define the class P.
+
+<NamesDemo language="en" mode="pairs" />
+
+<GrowthChart language="en" variant="polynomial" />
+
+In contrast, a function such as `2ⁿ` grows **exponentially**. Each increase of 1 in `n` doubles its value. The graph below lets you compare this with polynomial growth.
+
+<GrowthChart language="en" variant="comparison" />
+
+## What is P?
+
+**P** is the class of decision problems that a **deterministic algorithm** can correctly decide in polynomial time for every input of the problem. The P stands for polynomial. Here, deterministic means that the algorithm follows specified steps with no nondeterministic choices.
+
+For example: **“Does this list contain exactly five people?”** We can scan and count the entries, answer Yes if the count is five, and No otherwise. As discussed above, this method takes `O(n)` time. We have a polynomial-time algorithm that decides the answer, so this decision problem is in P.
+
+<NamesDemo language="en" mode="decision" />
+
+### Another example: Minimum Spanning Tree
+
+Imagine connecting several locations. Represent each location as a **vertex**, and each connection between two locations as an **edge** with a weight representing its cost. Together, these form a **graph**. A selection of edges connecting all the vertices without a cycle is a **spanning tree**. A spanning tree with the smallest total weight is a **Minimum Spanning Tree (MST)**. Here we consider an undirected, connected graph.
+
+<MstDemo language="en" />
+
+The decision version asks: **“Is there a spanning tree with total weight at most a given value `K`?”** We can first find an MST using Kruskal's algorithm or Prim's algorithm, then compare its total weight with `K`. If it is at most `K`, answer Yes. If even the minimum total exceeds `K`, answer No.
+
+Both algorithms run in polynomial time, so this procedure decides the question in polynomial time too. That makes the decision problem another member of P. You can explore the algorithms in [Princeton's Minimum Spanning Trees material](https://algs4.cs.princeton.edu/43mst/index.php).
+
+## What is NP?
+
+**NP** stands for **nondeterministic polynomial time**. We can describe it through **certificates**: for every Yes-instance of a problem in NP, there is a certificate whose size is polynomially bounded in the input size, and a deterministic **verifier** can check it correctly in polynomial time. For a No-instance, no certificate can make the verifier accept.
+
+Return to the queen puzzle. Someone can supply a complete list of queen positions as a certificate. We check that it contains the correct number of queens, all coordinates are inside the board, all original queens remain fixed, and no pair shares a row, column, or diagonal. If every check passes, we have established Yes without searching for a placement ourselves.
+
+<CertificateFigure language="en" />
+
+If a certificate fails, we only know that this particular proposal does not work. Another placement might still be valid. We have not established that the instance is a No. Also, NP does not mean “non-polynomial” or guarantee that a problem must be slow to solve.
+
+### How do we check the queen certificate?
+
+Let's write a straightforward verifier. `N` is the board's number of rows and columns, `Fixed` lists the original queen positions, and `Solution` lists all proposed queen positions. Each position is a `(row, column)` pair, with coordinates from 1 to `N`.
+
+<QueensVerifier language="en" />
+
+The diagonal test is `abs(r1 - r2) == abs(c1 - c2)`: if the distance between the rows equals the distance between the columns, the two queens share a diagonal. There are `N(N − 1) / 2` distinct pairs, giving `O(N²)` pair comparisons. Searching the proposed list for each original queen also takes at most `O(N²)` coordinate comparisons when there are at most `N` original queens.
+
+Here we explicitly represent every cell of the input board. Under that representation, the certificate size and the verifier's work are polynomial in the input size. The verifier never has to search for a new completion.
+
+## How are P and NP related?
+
+If a problem is in P, a polynomial-time decision algorithm already exists. We can build a verifier by simply running that algorithm on the input: accept when it answers Yes, and reject when it answers No. No additional certificate is needed. Therefore **every problem in P is also in NP**, written **`P ⊆ NP`**. These are not disjoint classes.
+
+What about the other direction? Is every problem in NP also in P? In other words: **if certificates for Yes-instances can be checked in polynomial time, can the problem itself be decided in polynomial time for every input?** This is the question **P = NP?** Neither equality nor inequality has been proved. Read more at the [Clay Mathematics Institute's P vs NP overview](https://www.claymath.org/millennium/p-vs-np/).
+
+<ClassRelationship language="en" />
+
+<aside className="pnp-prize">
+This question comes with a prize! P vs NP is one of the seven **Millennium Prize Problems** designated by the Clay Mathematics Institute, with **US$1,000,000** allocated to a solution that satisfies its award criteria. A proof of either `P = NP` or `P ≠ NP` would resolve the question. It really is a million-dollar question! See [The Millennium Prize Problems](https://www.claymath.org/millennium-problems/).
+</aside>
+
+## A preview of Part 2: Polynomial-time Reduction
+
+Before NP-hardness and NP-completeness, there is one more idea: **polynomial-time reduction**. Suppose A and B are decision problems. If we can transform every input of A into an input of B in polynomial time, always preserving the Yes/No answer, we write **`A ≤p B`**.
+
+This lets us use an algorithm for B to solve A: transform the input, run B's algorithm, and use its answer. If B can be solved in polynomial time, this entire procedure solves A in polynomial time too. In this sense, A is no harder than B. We will see how to use this idea in NP-completeness proofs in Part 2.
+
+<ReductionFigure language="en" />
+
+## Before we finish Part 1
+
+I hope this article helps everyone reading it, including anyone revising for an Algorithms exam. Good luck!
+
+- **P:** Decision problems that can be correctly decided by a deterministic algorithm in polynomial time.
+- **NP:** Decision problems whose Yes-instances have polynomial-size certificates checkable in polynomial time, while no certificate is accepted for a No-instance.
+- **`P ⊆ NP`:** Every problem in P is also in NP.
+
+We started by placing queens, and used that example to separate deciding a problem from checking a proposed certificate. In Part 2, we will use reductions to explore **NP-hardness and NP-completeness**, and what we must establish to prove that a problem is NP-complete. See you in the next part!
+
+## References
+
+- [Clay Mathematics Institute: P vs NP](https://www.claymath.org/millennium/p-vs-np/)
+- [Stephen Cook: The P versus NP Problem](https://www.claymath.org/wp-content/uploads/2022/06/pvsnp.pdf)
+- [Princeton: The class NP](https://theory.cs.princeton.edu/complexity/NPchap.pdf)
+- [Gent, Jefferson and Nightingale: Complexity of n-Queens Completion](https://eprints.whiterose.ac.uk/id/eprint/141513/1/n_queens_jair.pdf)
+- [Princeton: Minimum Spanning Trees](https://algs4.cs.princeton.edu/43mst/index.php)
+- [Clay Mathematics Institute: The Millennium Prize Problems](https://www.claymath.org/millennium-problems/)

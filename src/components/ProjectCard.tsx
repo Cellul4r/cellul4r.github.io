@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { Project } from '../types/portfolio'
 import { TechBadge } from './TechBadge'
+import { ProjectArtwork } from './home/ProjectArtwork'
 import './ProjectCard.css'
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -23,6 +24,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       transition={{ duration: reduceMotion ? 0 : 0.3, delay: reduceMotion ? 0 : index * 0.06 }}
     >
       <span className="card-ornament" aria-hidden="true">✦</span>
+      <Link className="project-card-art" to={`/projects/${project.slug}`} aria-label={`Explore ${project.title}`} tabIndex={-1} aria-hidden="true">
+        <ProjectArtwork slug={project.slug} />
+      </Link>
       <div className="project-card-top">
         <span className="mono-index">0{index + 1}</span>
         <span className="project-eyebrow">{project.eyebrow}</span>

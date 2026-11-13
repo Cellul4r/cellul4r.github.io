@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { MousePointerClick } from 'lucide-react'
 import { useAnyaInteraction } from '../hooks/useAnyaInteraction'
@@ -15,15 +14,15 @@ const pictures = [
   { src: anyaFinish, alt: 'Anya sitting on a gift box' },
 ]
 
-export function HeroIllustration() {
-  const { picture, dizzy, dragging, rotation, reduceMotion, changePicture, handlers } = useAnyaInteraction(pictures.length)
+export function HeroIllustration({ motionEnabled }: { motionEnabled?: boolean }) {
+  const { picture, dizzy, dragging, rotation, reduceMotion, changePicture, handlers } = useAnyaInteraction(pictures.length, motionEnabled === undefined ? undefined : !motionEnabled)
 
-  useEffect(() => {
-    for (const src of [anyaDizzy, ...pictures.map((item) => item.src)]) {
+  function preloadInteraction() {
+    for (const src of [anyaDizzy, pictures[(picture + 1) % pictures.length].src]) {
       const image = new Image()
       image.src = src
     }
-  }, [])
+  }
 
   return (
     <motion.div
@@ -42,6 +41,8 @@ export function HeroIllustration() {
         aria-label="Change Anya picture"
         aria-describedby="anya-instructions"
         onClick={changePicture}
+        onPointerEnter={preloadInteraction}
+        onFocus={preloadInteraction}
         {...handlers}
       >
         <motion.img
@@ -53,9 +54,9 @@ export function HeroIllustration() {
           style={{ rotate: rotation }}
         />
       </button>
-      <button className="anya-mouse-hint" type="button" onClick={changePicture} aria-label="Show next Anya picture" aria-describedby="anya-instructions">
+      <span className="anya-mouse-hint" aria-hidden="true">
         <MousePointerClick size={25} aria-hidden="true" />
-      </button>
+      </span>
       <span className="sr-only" id="anya-instructions">Click to change picture. Drag around Anya to rotate her. Keep rotating for one second to make her dizzy. Use the left and right arrow keys to rotate with a keyboard.</span>
       <span className="sr-only" role="status">{dizzy ? 'Anya is dizzy!' : pictures[picture].alt}</span>
     </motion.div>
