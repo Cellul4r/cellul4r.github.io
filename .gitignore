@@ -4,3 +4,7 @@ dist/
 .DS_Store
 .env*
 !.env.example
+
+# Generated caches from repository-local agent skills
+.agents/**/__pycache__/
+.agents/**/*.py[cod]
