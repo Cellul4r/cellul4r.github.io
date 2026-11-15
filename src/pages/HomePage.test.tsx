@@ -152,7 +152,7 @@ it.each([null, 'index, follow'])('keeps production indexing unchanged when previ
   document.title = 'Original title'
   const app = setup()
   try {
-    expect(document.title).toBe('Theerada Siri — Summer Edition')
+    expect(document.title).toBe('Theerada Siri')
     expect(document.querySelector<HTMLMetaElement>('meta[name="robots"]')?.content ?? null).toBe(previous)
     await act(() => app.router.navigate('/projects'))
     expect(document.title).toBe('Original title')

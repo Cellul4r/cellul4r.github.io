@@ -1,10 +1,10 @@
-import { ArrowDown, ArrowUpRight, Sun } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { ArrowDown, ArrowUpRight, Sun } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import anyaFace from '../../assets/anya-nav-friendly.png'
+import portrait from '../../assets/theerada-profile.webp'
 import { contests, profile } from '../../data/portfolio'
 import { usePaperTilt, useSummerMotion, useSummerScene } from './SummerMotion'
-import portrait from '../../assets/theerada-profile.webp'
-import anyaFace from '../../assets/anya-nav-friendly.png'
 
 export function SummerCover() {
   const { enabled } = useSummerMotion()
@@ -12,7 +12,7 @@ export function SummerCover() {
   const tilt = usePaperTilt()
   const contest = contests.find(entry => entry.id === 'icpc-thailand-national-2026')
   return <section className="summer-cover" id="cover" aria-labelledby="summer-name">
-    <div className="summer-cover-edition"><span><Sun size={15} aria-hidden="true" />The summer edition</span><span>A personal engineering portfolio</span></div>
+    <div className="summer-cover-edition"><span><Sun size={15} aria-hidden="true" />The summer edition</span><span>A personal portfolio</span></div>
     <h1 className="summer-masthead" id="summer-name">{profile.name}</h1>
     <div className="summer-cover-byline" id="skills"><span>{profile.role}</span><span>{profile.headline}</span></div>
     <div ref={ref} className="summer-cover-grid">
@@ -26,7 +26,7 @@ export function SummerCover() {
       <div className="summer-portrait-stage" onPointerMove={tilt.onPointerMove} onPointerLeave={tilt.onPointerLeave}>
         <motion.div className="summer-sun-disc" aria-hidden="true" animate={moving ? { rotate: [0, 8, 0] } : { rotate: 0 }} transition={{ duration: moving ? 18 : 0, repeat: moving ? Infinity : 0, ease: 'easeInOut' }}><svg viewBox="0 0 200 200" fill="none" focusable="false"><circle cx="100" cy="100" r="69" />{Array.from({ length: 16 }, (_, i) => <path key={i} d="M100 5v13" transform={`rotate(${i * 22.5} 100 100)`} />)}</svg></motion.div>
         <motion.figure className="summer-portrait" style={tilt.style} initial={enabled ? { y: 12, rotate: -2 } : false} animate={{ y: 0, rotate: -2 }} transition={{ duration: .7, ease: [.22, 1, .36, 1] }}>
-          <div className="summer-portrait-print"><img src={portrait} alt="Theerada Siri" width={1540} height={2048} fetchPriority="high" /><span className="summer-halftone" aria-hidden="true" /></div>
+          <div className="summer-portrait-print"><img src={portrait} alt="Theerada Siri" width={1540} height={2048} fetchPriority="high" /></div>
           <figcaption><span>The person behind the projects.</span><span aria-hidden="true">TS.</span></figcaption>
         </motion.figure>
         <div className="summer-margin-note"><svg viewBox="0 0 80 60" fill="none" aria-hidden="true" focusable="false"><path d="M7 6c48-10 63 17 39 36m-4-14 2 17 17-5" /></svg><p>Summer edition.<br />I’m happier when it’s warm.</p></div>

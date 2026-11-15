@@ -12,6 +12,11 @@
   --summer-muted: #68604e;
   --summer-rule: #cbbd9b;
   --summer-display: Fraunces, Georgia, serif;
+  --summer-photo-paper: #f8f7f2;
+  --summer-photo-edge: #a7afad;
+  --summer-photo-ink: #364349;
+  --summer-photo-shadow: #26384526;
+  --summer-photo-tape: #dcdfd4b3;
   --ink: var(--summer-ink);
   --ink-soft: #40392d;
   --paper: var(--summer-paper);
@@ -104,11 +109,10 @@ body { color: var(--summer-ink); background: var(--summer-desk); }
 .summer-sun-disc { position: absolute; width: 79%; right: -8%; top: -3%; aspect-ratio: 1; color: var(--summer-orange); }
 .summer-sun-disc svg { width: 100%; height: 100%; stroke: currentColor; stroke-width: 2; }
 .summer-sun-disc circle { fill: var(--summer-orange); stroke-width: 0; }
-.summer-portrait { position: relative; width: 90%; margin-left: 0 !important; padding: 9px 9px 0; border: 1px solid #a38d61; background: #f5dfaa; box-shadow: 6px 10px 0 #c8b89455; transform-style: preserve-3d; }
-.summer-portrait::before { content: ''; position: absolute; z-index: 3; width: 70px; height: 23px; background: #e6c87aa6; left: 35%; top: -12px; transform: rotate(5deg); }
-.summer-portrait-print { position: relative; isolation: isolate; background: #e9bd66; overflow: hidden; }
-.summer-portrait-print > img { display: block; width: 100%; aspect-ratio: 4 / 4.8; height: auto; object-fit: cover; object-position: 50% 22%; filter: grayscale(1) contrast(1.13); mix-blend-mode: multiply; }
-.summer-halftone { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#32281d 22%, transparent 45%); background-size: 3px 3px; opacity: .18; mix-blend-mode: multiply; }
+.summer-portrait { position: relative; width: 90%; margin-left: 0 !important; padding: 9px 9px 0; border: 1px solid var(--summer-photo-edge); color: var(--summer-photo-ink); background: var(--summer-photo-paper); box-shadow: 6px 10px 0 var(--summer-photo-shadow); transform-style: preserve-3d; }
+.summer-portrait::before { content: ''; position: absolute; z-index: 3; width: 70px; height: 23px; background: var(--summer-photo-tape); left: 35%; top: -12px; transform: rotate(5deg); }
+.summer-portrait-print { position: relative; isolation: isolate; overflow: hidden; }
+.summer-portrait-print > img { display: block; width: 100%; aspect-ratio: 4 / 4.8; height: auto; object-fit: cover; object-position: 50% 22%; }
 .summer-portrait figcaption { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 13px 5px; font-size: .6875rem; }
 .summer-portrait figcaption > span:last-child { font: 600 1.05rem/1 var(--summer-display); }
 .summer-margin-note { position: absolute; bottom: 2px; right: 0; display: flex; align-items: start; gap: 4px; transform: rotate(3deg); }
