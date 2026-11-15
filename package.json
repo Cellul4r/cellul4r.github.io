@@ -6,6 +6,8 @@
   "scripts": {
     "test": "vitest run",
     "test:matching": "node --test tests/matching.test.mjs",
+    "test:hooks": "node --test tests/push-guard.test.mjs",
+    "hooks:install": "node scripts/install-git-hooks.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build && node -e \"require('node:fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
     "preview": "vite preview"

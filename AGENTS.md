@@ -1,5 +1,63 @@
 # AGENTS.md — Theerada Siri Personal Portfolio
 
+## Agent Operating Guide
+
+### Repository map
+
+| Location | Purpose |
+| --- | --- |
+| `src/main.tsx`, `src/app/router.tsx` | App entry, shared styles, route definitions, and deployment basename |
+| `src/layouts/SiteLayout.tsx` | Shared summer paper layout, navigation, footer, and motion provider |
+| `src/pages/HomePage.tsx`, `src/components/summer/` | Active homepage and its summer editorial components |
+| `src/styles/summer-theme.css`, `src/styles/summer-content.css` | Current design tokens, shared summer theme, and content-page styling |
+| `src/data/`, `src/types/` | Typed portfolio content and shared models |
+| `src/content/articles/`, `src/data/articles.ts`, `docs/articles.md` | MDX articles, article metadata, and authoring guidance |
+| `src/features/competitive-programming/` | Contest galleries, Codeforces profile, and matching demonstration |
+| `src/test/`, `src/**/*.test.ts`, `src/**/*.test.tsx`, `tests/` | Test setup, colocated Vitest tests, and standalone matching tests |
+| `.github/workflows/deploy.yml`, `vite.config.ts` | GitHub Pages deployment and repository-aware build base |
+| `.githooks/`, `scripts/`, `docs/git-hooks.md` | Agent push guard, local installation, and verification |
+
+Follow the active entrypoints before editing older components. Some earlier home components remain in the repository; inspect imports to confirm which implementation is rendered.
+
+### Commands
+
+Run commands from the repository root. Use the existing lockfile and npm scripts.
+
+| Command | Purpose |
+| --- | --- |
+| `npm ci` | Install the dependencies recorded in `package-lock.json` when setup is needed |
+| `npm run dev` | Start the Vite development server |
+| `npm test` | Run the Vitest suite |
+| `npm test -- src/pages/HomePage.test.tsx` | Example of running a focused test file |
+| `npm run test:matching` | Run the standalone matching algorithm tests |
+| `npm run test:hooks` | Test the push guard locally without pushing or contacting a remote |
+| `npm run hooks:install` | Activate this clone's Git hooks; see `docs/git-hooks.md` |
+| `npm run build` | Run TypeScript checking, build to `dist`, and create the Pages `404.html` fallback |
+| `npm run preview` | Serve the production build locally after building |
+
+There is currently no dedicated lint script. Do not claim lint passed unless a lint check has actually been configured and run.
+
+### Working and verification
+
+1. Inspect Git status, applicable instructions, relevant code, and nearby tests. Preserve unrelated user changes.
+2. Make a focused change that follows existing components, typed content, and design tokens. Resolve routine implementation choices within the requested scope; clarify missing facts that affect correctness.
+3. For behavior changes, run relevant existing tests; add tests when needed to cover meaningful new behavior or a regression. Run the matching tests when changing matching logic. Run `npm run build` after meaningful implementation changes and fix failures caused by the change.
+4. For appearance changes, visually check the affected desktop and mobile layouts when tools are available. Check relevant keyboard/focus behavior, overflow, and reduced-motion behavior. Report unavailable or blocked checks explicitly.
+5. For documentation-only changes, verify named paths and commands and review the wording; application tests and builds are unnecessary unless runtime behavior also changes.
+6. Review the final diff and run `git diff --check`. Report what changed, which checks ran, and any remaining limitations. Claim verification only when supported by actual results.
+
+### Git boundaries
+
+- Create commits only when the user explicitly requests them. Stage only changes within the authorized scope.
+- Push only when the user explicitly authorizes that push. A request to implement or commit does not authorize pushing; earlier push authorization does not cover later unrelated work.
+- Apply the same authorization requirement to equivalent remote repository writes through connectors or APIs. Do not use another tool to bypass the push restriction.
+- Preserve unrelated work. Do not discard, overwrite, reset, or amend user changes without authorization.
+- Do not bypass configured push protections, including by disabling hooks or using `--no-verify`.
+- The repository's `pre-push` hook blocks detected agent/CI sessions. Hand pushes back to the user for execution from their own terminal, even when a push is requested. Never remove session markers to bypass the guard.
+- Run `npm run hooks:install` once per clone to activate the guard. See `docs/git-hooks.md` for detection, setup, and limitations; GitHub API writes remain governed by the authorization rule above.
+
+---
+
 ## Mission
 
 Build a polished personal technical portfolio for **Theerada Siri**, a Computer Science student whose interests span:
@@ -82,24 +140,21 @@ Do not make the site sound as if I have already chosen only one career track.
 
 ## Visual Direction
 
-Create a modern, technical, premium, slightly playful portfolio.
+Maintain the established summer newspaper identity: warm, editorial, technical, premium, and slightly playful.
 
-The visual identity should use a sophisticated green/red palette inspired by Christmas colors **without looking like a Christmas website**.
+Use the active summer components and the existing tokens in `src/styles/summer-theme.css` as the design baseline:
 
-Preferred palette:
+- warm cream paper surfaces on a muted sand desk background;
+- dark ink text with sufficient contrast;
+- orange and yellow accents, with olive details;
+- Fraunces display typography and DM Sans body typography;
+- fine rules, editorial columns, paper framing, and restrained shadows;
+- subtle paper texture and sunlight that keep content readable.
 
-- very dark evergreen background;
-- forest-green accents;
-- deep muted burgundy/red accents;
-- warm off-white text;
-- subtle muted-gold highlights when useful.
+Keep the profile portrait in its natural colors with the established ivory frame, slate edge, soft shadow, and pale sage tape. Do not reintroduce grayscale, tinting, or a halftone overlay on the photo.
 
 Avoid:
 
-- Santa;
-- Christmas trees;
-- snowmen;
-- candy canes;
 - literal holiday graphics;
 - excessive gradients;
 - excessive glassmorphism;
@@ -111,16 +166,7 @@ The result should feel distinctive, technical, warm, and memorable.
 
 ### Semantic color use
 
-Use the palette consistently rather than assigning the whole site to only two categories.
-
-Suggested accents:
-
-- Software Engineering → burgundy / deep red
-- Cloud & Infrastructure → evergreen / teal-green
-- Networking → muted gold / amber
-- Competitive Programming → green with subtle gold accents
-
-These are accents, not isolated mini-themes. The entire site must still feel cohesive.
+Reuse the existing semantic tokens across technical areas. Orange, yellow, and olive may support emphasis and hierarchy without giving each area a separate palette. Use text labels and structure to distinguish technical interests and completed work from learning; color alone must not convey those meanings.
 
 ---
 
@@ -131,7 +177,13 @@ Primary routes:
 - `/` — Home
 - `/projects` — Project Library
 - `/projects/:slug` — Project Detail
+- `/projects/typing-vs-demon` — Dedicated game case study
 - `/competitive-programming` — Competitive Programming
+- `/competitive-programming/codeforces` — Codeforces profile and statistics
+- `/articles` — Article Library
+- `/articles/:slug` — Article Detail
+
+The legacy `/preview/summer` route redirects to `/`. Keep route behavior aligned with `src/app/router.tsx`.
 
 Cloud and Networking may initially be sections on the home/about experience rather than separate routes. They should be easy to promote into dedicated pages later when there is enough project evidence.
 
@@ -161,7 +213,7 @@ Primary actions:
 - View Resume
 - GitHub
 
-Use a subtle animated ambient background. Do not obscure text.
+Use the established editorial cover and subtle sunlight or paper motion. Keep the introduction readable and the profile photo in its natural colors.
 
 ### Technical Areas
 
@@ -387,7 +439,7 @@ Avoid walls of text.
 
 ## Competitive Programming Page
 
-Use a visually distinct but cohesive green/gold identity.
+Use the shared summer paper and ink identity, with olive and yellow accents for achievements and algorithmic visuals. Distinguish this page through its content and technical motifs while retaining the site's typography and layout language.
 
 ### ICPC Thailand National Contest 2026
 
@@ -443,11 +495,11 @@ Use Framer Motion.
 Good uses:
 
 - hero entrance;
-- slow ambient green/red background lights;
-- subtle cursor-reactive glow;
+- slow, subtle sunlight movement;
+- subtle pointer-reactive paper tilt on supported devices;
 - section reveals;
 - card elevation;
-- border/glow transitions;
+- border and shadow transitions;
 - page transitions;
 - subtle graph/node movement.
 
@@ -598,6 +650,8 @@ Before making large changes:
 4. propose or confirm the component/page structure;
 5. implement incrementally.
 
+The site already implements the core foundations below. Use these phases to organize future work while extending the active implementation.
+
 Suggested phases:
 
 ### Phase 1 — Foundation
@@ -650,9 +704,9 @@ Suggested phases:
 
 After meaningful implementation changes:
 
-- run TypeScript / lint checks if configured;
-- run `npm run build`;
-- fix errors before moving on.
+- follow the operating guide's verification workflow;
+- run relevant tests and `npm run build`, which includes TypeScript checking;
+- fix errors caused by the change before moving on and report any unrelated failures.
 
 Do not sacrifice maintainability or accessibility for visual effects.
 
@@ -683,7 +737,7 @@ The site should feel like a real technical portfolio, not:
 
 - a generic AI-generated portfolio;
 - a student assignment;
-- a Christmas landing page;
+- a seasonal promotional landing page;
 - a flashy animation demo.
 
 The final experience should communicate:
