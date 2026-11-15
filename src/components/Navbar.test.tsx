@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
-import { expect, it } from 'vitest'
+import { expect, it, vi } from 'vitest'
 import { Navbar } from './Navbar'
 
 function renderNavbar(path = '/') {
@@ -56,4 +56,31 @@ it('changes scroll styling without changing navigation state', () => {
   fireEvent.scroll(window)
   expect(container.querySelector('.summer-theme-header.is-scrolled')).toBeNull()
   router.dispose()
+})
+
+it('keeps the sticky case-study offset aligned when the header resizes', () => {
+  let resize!: ResizeObserverCallback
+  const disconnect = vi.fn()
+  vi.stubGlobal('ResizeObserver', class {
+    constructor(callback: ResizeObserverCallback) { resize = callback }
+    observe() {}
+    disconnect = disconnect
+  })
+  let height = 86
+  vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(() => ({ height } as DOMRect))
+  const router = createMemoryRouter([{ path: '*', element: <div className="summer-theme"><Navbar /></div> }])
+  const view = render(<RouterProvider router={router} />)
+  const theme = view.container.querySelector<HTMLElement>('.summer-theme')!
+  try {
+    expect(theme.style.getPropertyValue('--summer-header-height')).toBe('86px')
+    height = 110
+    act(() => resize([], {} as ResizeObserver))
+    expect(theme.style.getPropertyValue('--summer-header-height')).toBe('110px')
+    view.unmount()
+    expect(disconnect).toHaveBeenCalledOnce()
+    expect(theme.style.getPropertyValue('--summer-header-height')).toBe('')
+  } finally {
+    view.unmount()
+    router.dispose()
+  }
 })

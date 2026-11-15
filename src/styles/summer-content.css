@@ -84,7 +84,7 @@
 .summer-content-page :is(.article-draft-note, .article-draft) { background: #f5e5b9; color: #70551e; }
 .summer-content-page .article-contents-title { margin-bottom: 12px; }
 .summer-content-page .article-reader .article-prose :is(h2[id], h3[id], h4[id]),
-.summer-content-page .cp-page :is(#icpc, #tutoring-activity),
+.summer-content-page .cp-page :is(#icpc, #tutoring-activity) { scroll-margin-top: var(--summer-header-offset); }
 .summer-content-page .tvd-case-study :is(section[id], h2[id]) { scroll-margin-top: var(--summer-header-offset); }
 
 /* Competition results retain their photographs and interactive algorithm demo. */
@@ -120,11 +120,15 @@
 .summer-content-page :is(.tvd-wave-intro h3, .tvd-decision h3, .empty-state h1) { font-family: var(--summer-display); }
 
 @media (min-width: 48rem) {
+  .summer-content-page .tvd-case-study { --tvd-sticky-top: var(--summer-header-height, 110px); --tvd-outline-clearance: 112px; }
+  .summer-content-page .tvd-outline { top: var(--tvd-sticky-top); z-index: 5; }
+  .summer-content-page .tvd-case-study :is(section[id], h2[id]) { scroll-margin-top: calc(var(--tvd-sticky-top) + var(--tvd-outline-clearance)); }
   .summer-content-page .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .summer-content-page .page-title-row { gap: 28px; }
   .summer-content-page .article-filters { grid-template-columns: minmax(0, 1fr) 200px 160px; }
 }
 @media (min-width: 64rem) {
+  .summer-content-page .tvd-case-study { --tvd-sticky-top: var(--summer-header-height, 86px); --tvd-outline-clearance: 68px; }
   .summer-content-page .section { padding-block: 68px; }
   .summer-content-page .detail-section { padding-block: 64px; }
   .summer-content-page .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
