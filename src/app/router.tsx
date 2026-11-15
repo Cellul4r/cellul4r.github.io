@@ -16,6 +16,7 @@ const SummerPreviewPage = lazy(() => import('../pages/SummerPreviewPage'))
 const CompetitiveProgrammingPage = lazy(() => import('../pages/CompetitiveProgrammingPage').then((module) => ({ default: module.CompetitiveProgrammingPage })))
 const CodeforcesPage = lazy(() => import('../pages/CodeforcesPage').then(module => ({ default: module.CodeforcesPage })))
 const TypingVsDemonPage = lazy(() => import('../pages/TypingVsDemonPage').then(module => ({ default: module.TypingVsDemonPage })))
+const FinancialAdvisorPage = lazy(() => import('../pages/FinancialAdvisorPage').then(module => ({ default: module.FinancialAdvisorPage })))
 
 const basename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')
 export const routes: RouteObject[] = [
@@ -29,6 +30,7 @@ export const routes: RouteObject[] = [
       { path: 'articles/:slug', element: <Suspense fallback={<ArticleSkeleton />}><ArticlePage /></Suspense> },
       { path: 'projects', element: <ProjectsPage /> },
       { path: 'projects/typing-vs-demon', element: <Suspense key="typing-vs-demon" fallback={<p className="container page" role="status">Loading Typing VS Demon case study…</p>}><TypingVsDemonPage /></Suspense> },
+      { path: 'projects/llm-financial-advisor', element: <Suspense key="llm-financial-advisor" fallback={<p className="container page" role="status">Loading LLM Financial Advisor case study…</p>}><FinancialAdvisorPage /></Suspense> },
       { path: 'projects/:slug', element: <ProjectDetailPage /> },
       { path: 'competitive-programming', element: <Suspense key="competitive-programming" fallback={<p className="container page" role="status">Loading contest results…</p>}><CompetitiveProgrammingPage /></Suspense> },
       { path: 'competitive-programming/codeforces', element: <Suspense key="codeforces" fallback={<CodeforcesPageSkeleton />}><CodeforcesPage /></Suspense> },

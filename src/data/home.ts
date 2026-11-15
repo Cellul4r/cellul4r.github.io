@@ -4,8 +4,8 @@ export const homeProjectPresentation: Record<string, { description: string; high
     highlights: ['System & database design', 'Transactions & row-level locking'],
   },
   'llm-financial-advisor': {
-    description: 'Natural-language questions meet deterministic financial tools. An educational prototype in Thai and English.',
-    highlights: ['Schema-driven tool calling', '13 validation scenarios'],
+    description: 'A Streamlit financial assistant connecting Thai and English questions to Python tools for tax, loans, and savings.',
+    highlights: ['Thai income-tax calculator & schema', '13 scenarios checked manually'],
   },
   'typing-vs-demon': {
     description: 'Five lanes. Incoming demons. Your keyboard is the weapon. A Java typing action game.',

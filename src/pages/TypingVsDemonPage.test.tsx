@@ -37,8 +37,9 @@ it('opens the dedicated case study directly and provides working section targets
     expect(playNote?.textContent).toMatch(/desktop with a keyboard/)
     expect(playNote?.textContent).toMatch(/first load may take a moment/i)
     const navigation = screen.getByRole('navigation', { name: 'In this case study' })
+    expect(navigation.classList.contains('case-study-outline')).toBe(true)
     for (const link of within(navigation).getAllByRole('link')) {
-      expect(document.getElementById(link.getAttribute('href')!.slice(1))).not.toBeNull()
+      expect(document.getElementById(link.getAttribute('href')!.split('#')[1])).not.toBeNull()
     }
     const gameplay = screen.getByAltText(/Typing VS Demon gameplay/)
     expect(gameplay.getAttribute('loading')).toBe('eager')
@@ -77,7 +78,6 @@ it('distinguishes the state redesign from its implementation and exposes diagram
 
 it.each([
   ['/projects/noona-appointment', 'Noona Appointment'],
-  ['/projects/llm-financial-advisor', 'LLM Financial Advisor'],
 ])('preserves the existing detail page at %s', async (path, title) => {
   const close = openProject(path)
   try {

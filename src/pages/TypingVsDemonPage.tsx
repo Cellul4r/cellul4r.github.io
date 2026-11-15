@@ -2,6 +2,7 @@ import { ArrowDown, ArrowLeft, ArrowUpRight, CodeXml, Keyboard, Play } from 'luc
 import { Link } from 'react-router-dom'
 import { ScrollReveal } from '../components/ScrollReveal'
 import { CaseStudyFigure } from '../components/projects/CaseStudyFigure'
+import { CaseStudyNavigation } from '../components/projects/CaseStudyNavigation'
 import { GameStateDiagram, WordObjectDiagram } from '../components/projects/TypingVsDemonDiagrams'
 import { typingVsDemon as project, typingVsDemonMedia as media } from '../data/typingVsDemon'
 import './TypingVsDemonPage.css'
@@ -10,7 +11,7 @@ import { usePageMetadata } from '../hooks/usePageMetadata'
 export function TypingVsDemonPage() {
   usePageMetadata('Typing VS Demon | Theerada Siri', project.description)
   return (
-    <article className="tvd-case-study">
+    <article className="tvd-case-study project-case-study">
       <header className="tvd-hero">
         <div className="container">
           <Link className="tvd-back" to="/projects"><ArrowLeft size={16} aria-hidden="true" /> All projects</Link>
@@ -34,9 +35,7 @@ export function TypingVsDemonPage() {
         </div>
       </header>
 
-      <nav className="tvd-outline" aria-label="In this case study">
-        <div className="container">{project.navigation.map((item, index) => <a key={item.id} href={`#${item.id}`}><span aria-hidden="true">0{index + 1}</span>{item.label}</a>)}</div>
-      </nav>
+      <CaseStudyNavigation sections={project.navigation} />
 
       <div className="container tvd-content">
         <ScrollReveal as="section" id="tvd-story" className="tvd-section tvd-story" aria-labelledby="tvd-story-title">
