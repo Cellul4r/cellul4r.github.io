@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22 0 164 168" width="164" height="168">
+  <rect x="8" y="8" width="108" height="156" rx="12" fill="#bda789"/>
+  <rect x="3" y="3" width="108" height="156" rx="12" fill="#566145" stroke="#404c33" stroke-width="2"/>
+  <rect x="16" y="17" width="82" height="34" rx="4" fill="#d6dfbe"/>
+  <text x="88" y="41" text-anchor="end" fill="#566145" font-family="'IBM Plex Mono', monospace" font-size="15">f(x)</text>
+  <g fill="#f3eddf">
+    <rect x="17" y="63" width="21" height="15" rx="3"/><rect x="45" y="63" width="21" height="15" rx="3"/><rect x="73" y="63" width="21" height="15" rx="3"/>
+    <rect x="17" y="86" width="21" height="15" rx="3"/><rect x="45" y="86" width="21" height="15" rx="3"/><rect x="73" y="86" width="21" height="15" rx="3"/>
+    <rect x="17" y="109" width="21" height="15" rx="3"/><rect x="45" y="109" width="21" height="15" rx="3"/><rect x="73" y="109" width="21" height="15" rx="3"/>
+    <rect x="17" y="132" width="21" height="15" rx="3"/><rect x="45" y="132" width="21" height="15" rx="3"/>
+  </g>
+  <rect x="73" y="132" width="21" height="15" rx="3" fill="#d2ad65"/>
+</svg>

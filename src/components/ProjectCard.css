@@ -12,6 +12,7 @@
   flex: 0 0 64px;
   width: 64px;
   height: 64px;
+  object-fit: contain;
   image-rendering: pixelated;
   pointer-events: none;
   user-select: none;

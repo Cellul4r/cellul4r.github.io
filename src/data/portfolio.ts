@@ -1,5 +1,6 @@
 import type { Contest, Profile, Project } from '../types/portfolio'
 import typingQueen from '../assets/projects/typing-vs-demon/player-queen.png'
+import financeCalculator from '../assets/projects/llm-financial-advisor/calculator.svg'
 import awardPhoto from '../assets/icpc/2025/award.webp'
 import awardPreview from '../assets/icpc/2025/award-preview.webp'
 import awardThumbnail from '../assets/icpc/2025/award-thumb.webp'
@@ -70,6 +71,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'llm-financial-advisor',
+    cardDecoration: { src: financeCalculator, width: 164, height: 168 },
     title: 'LLM Financial Advisor',
     eyebrow: 'Financial tools & LLM integration',
     description: 'A Streamlit application that connects Thai and English financial questions to Python tools for tax, loans, savings, and financial health.',

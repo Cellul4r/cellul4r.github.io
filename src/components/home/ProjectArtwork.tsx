@@ -3,6 +3,8 @@ import { useSummerMotion } from '../summer/SummerMotion'
 import './ProjectArtwork.css'
 import gameplay from '../../assets/projects/typing-vs-demon/play_menu.png'
 import player from '../../assets/projects/typing-vs-demon/player-queen.png'
+import financeStart from '../../assets/projects/llm-financial-advisor/start-screen.png'
+import calculator from '../../assets/projects/llm-financial-advisor/calculator.svg'
 
 function RegistrationArtwork() {
   const { active: enabled } = useSummerMotion()
@@ -28,30 +30,14 @@ function RegistrationArtwork() {
   </svg>
 }
 
-function FinancialArtwork() {
-  const { active: enabled } = useSummerMotion()
-  return <svg viewBox="0 0 600 380" role="img" aria-label="Illustrated financial tool calling: a question flows to a calculator through ToolExecutor">
-    <circle cx="310" cy="186" r="146" fill="#e7c8a0" />
-    <g transform="rotate(8 384 196)">
-      <rect x="302" y="72" width="181" height="255" rx="18" fill="#bda789" />
-      <rect x="294" y="64" width="181" height="255" rx="18" fill="#566145" stroke="#404c33" strokeWidth="2" />
-      <rect x="316" y="87" width="137" height="56" rx="6" fill="#d6dfbe" />
-      <text x="432" y="124" textAnchor="end" fill="#566145" fontFamily="'IBM Plex Mono', monospace" fontSize="22">f(x)</text>
-      {Array.from({ length: 12 }, (_, i) => <rect key={i} x={317 + i % 3 * 47} y={163 + Math.floor(i / 3) * 34} width="35" height="23" rx="5" fill={i === 11 ? '#d2ad65' : '#f3eddf'} />)}
-    </g>
-    <motion.g animate={enabled ? { y: [0, -8, 0], rotate: [-4, -1, -4] } : { y: 0, rotate: 0 }} transition={{ duration: enabled ? 5.5 : 0, repeat: enabled ? Infinity : 0, ease: 'easeInOut' }}>
-      <path d="M94 101h194a12 12 0 0112 12v57a12 12 0 01-12 12H137l-27 23v-23H94a12 12 0 01-12-12v-57a12 12 0 0112-12Z" fill="#fbf1d8" stroke="#a38170" strokeWidth="1.5" />
-      <text x="106" y="135" fill="#e65b35" fontSize="17" fontFamily="'DM Sans', sans-serif">A financial question</text><path d="M106 154h145" stroke="#d9c8b5" strokeWidth="5" strokeLinecap="round" />
-    </motion.g>
-    <path d="M155 227q-22 55 57 55h56" stroke="#a38170" strokeWidth="2" fill="none" strokeDasharray="5 6" /><path d="m258 275 12 7-12 7" stroke="#a38170" strokeWidth="2" fill="none" />
-    <g transform="rotate(-5 203 276)"><rect x="87" y="250" width="208" height="53" rx="7" fill="#e65b35" /><text x="191" y="283" textAnchor="middle" fill="#fbf1d8" fontSize="18" fontFamily="'IBM Plex Mono', monospace">ToolExecutor</text></g>
-  </svg>
-}
-
 export function ProjectArtwork({ slug }: { slug: string }) {
   const { active: enabled } = useSummerMotion()
   if (slug === 'noona-appointment') return <div className="work-art work-art-noona"><RegistrationArtwork /><span className="work-art-caption">Event registration · Concept illustration</span></div>
-  if (slug === 'llm-financial-advisor') return <div className="work-art work-art-finance"><FinancialArtwork /><span className="work-art-caption">Function calling · Concept illustration</span></div>
+  if (slug === 'llm-financial-advisor') return <div className="work-art work-art-finance">
+    <div className="game-window"><div className="game-window-bar" aria-hidden="true"><i /><i /><i /><span>Financial Advisor</span></div><img src={financeStart} alt="Financial Advisor start screen with category shortcuts, suggested questions, and a chat input" loading="lazy" /></div>
+    <motion.img className="finance-calculator-sticker" src={calculator} width={164} height={168} alt="" aria-hidden="true" animate={enabled ? { y: [0, -10, 0], rotate: [6, -2, 6] } : { y: 0, rotate: 0 }} transition={{ duration: enabled ? 4 : 0, repeat: enabled ? Infinity : 0, ease: 'easeInOut' }} />
+    <span className="work-art-caption">Python · Streamlit · Actual interface</span>
+  </div>
   return <div className="work-art work-art-game">
     <div className="game-window"><div className="game-window-bar" aria-hidden="true"><i /><i /><i /><span>Typing VS Demon</span></div><img src={gameplay} alt="Typing VS Demon gameplay with five lanes and word-labelled enemies" loading="lazy" /></div>
     <motion.img className="game-player-sticker" src={player} width={32} height={32} alt="" aria-hidden="true" animate={enabled ? { y: [0, -14, 0], rotate: [-5, 5, -5] } : { y: 0, rotate: 0 }} transition={{ duration: enabled ? 3.5 : 0, repeat: enabled ? Infinity : 0, ease: 'easeInOut' }} />
