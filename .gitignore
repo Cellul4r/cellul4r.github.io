@@ -5,6 +5,9 @@ dist/
 .env*
 !.env.example
 
+# Local link to .agents/skills for Claude Code (see CLAUDE.md)
+.claude/skills
+
 # Generated caches from repository-local agent skills
 .agents/**/__pycache__/
 .agents/**/*.py[cod]
