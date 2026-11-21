@@ -29,8 +29,7 @@
 .project-card:focus-within .text-link { text-decoration: underline; text-underline-offset: 4px; }
 .project-card:focus-within .text-link > svg,
 .working-skills-grid article:focus-within .skills-link > svg,
-.contact-links a:focus-visible > svg,
-.tree-tag:focus-visible .tag-action > svg { transform: translate(3px, -3px); }
+.contact-links a:focus-visible > svg { transform: translate(3px, -3px); }
 
 @media (hover: hover) and (pointer: fine) {
   :root [data-feedback]:not(:disabled):hover {
@@ -42,8 +41,7 @@
   .project-card:is(:hover, :focus-within) .text-link { text-decoration: underline; text-underline-offset: 4px; }
   .project-card:is(:hover, :focus-within) .text-link > svg,
   .working-skills-grid article:is(:hover, :focus-within) .skills-link > svg,
-  .contact-links a:is(:hover, :focus-visible) > svg,
-  .tree-tag:is(:hover, :focus-visible) .tag-action > svg { transform: translate(3px, -3px); }
+  .contact-links a:is(:hover, :focus-visible) > svg { transform: translate(3px, -3px); }
 }
 
 :root [data-feedback="action"]:not(:disabled):active {
@@ -59,12 +57,12 @@
 .project-card[data-feedback] { --feedback-border: #a76d7b; }
 .skills-learning[data-feedback], .icpc-result[data-feedback] { --feedback-border: #79986b; }
 .tvd-diagram[data-feedback], .tvd-improvements [data-feedback] { --feedback-border: #8f9f78; }
-.contact-links a > svg, .tree-tag .tag-action > svg { transition: transform var(--feedback-duration) ease; }
+.contact-links a > svg { transition: transform var(--feedback-duration) ease; }
 
 @media (prefers-reduced-motion: reduce) {
   :root [data-feedback], .button { transition: none; }
   :root [data-feedback="action"]:is(:hover, :focus-visible, :focus-within, :active), .button:active { translate: none; scale: none; }
-  .project-card .text-link > svg, .working-skills-grid .skills-link > svg, .contact-links a > svg, .tree-tag .tag-action > svg { transform: none !important; transition: none; }
+  .project-card .text-link > svg, .working-skills-grid .skills-link > svg, .contact-links a > svg { transform: none !important; transition: none; }
 }
 
 @media print {
