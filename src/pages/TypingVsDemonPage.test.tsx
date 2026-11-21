@@ -76,13 +76,11 @@ it('distinguishes the state redesign from its implementation and exposes diagram
   } finally { close() }
 })
 
-it.each([
-  ['/projects/noona-appointment', 'Noona Appointment'],
-])('preserves the existing detail page at %s', async (path, title) => {
-  const close = openProject(path)
+it('routes Noona to its own dedicated case study rather than the generic detail page', async () => {
+  const close = openProject('/projects/noona-appointment')
   try {
-    await screen.findByRole('heading', { level: 1, name: title })
-    expect(screen.getByRole('heading', { name: 'Architecture at a glance.' })).toBeTruthy()
-    expect(screen.queryByRole('navigation', { name: 'In this case study' })).toBeNull()
+    await screen.findByRole('heading', { level: 1, name: 'Noona Appointment' }, { timeout: 5000 })
+    expect(screen.queryByRole('heading', { name: 'Architecture at a glance.' })).toBeNull()
+    expect(screen.getByRole('navigation', { name: 'In this case study' })).toBeTruthy()
   } finally { close() }
 })

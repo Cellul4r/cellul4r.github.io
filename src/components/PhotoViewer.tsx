@@ -1,17 +1,23 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import type { ContestPhoto } from '../../../types/portfolio'
+import type { ContestPhoto } from '../types/portfolio'
+import './PhotoViewer.css'
+
+export type ViewerPhoto = Pick<ContestPhoto, 'src' | 'thumbnailSrc' | 'width' | 'height' | 'alt' | 'caption'>
 
 interface PhotoViewerProps {
   title: string
-  photos: ContestPhoto[]
+  photos: ViewerPhoto[]
   activeIndex: number
   onIndexChange: (index: number) => void
   onClose: () => void
+  eyebrow?: string
+  itemLabel?: string
+  groupLabel?: string
 }
 
-export function PhotoViewer({ title, photos, activeIndex, onIndexChange, onClose }: PhotoViewerProps) {
+export function PhotoViewer({ title, photos, activeIndex, onIndexChange, onClose, eyebrow = 'Contest memories', itemLabel = 'photo', groupLabel = 'Select a contest photo' }: PhotoViewerProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const openerRef = useRef<HTMLElement | null>(null)
   const titleId = useId()
@@ -49,8 +55,8 @@ export function PhotoViewer({ title, photos, activeIndex, onIndexChange, onClose
       }}>
       <div className="photo-viewer-shell">
         <header className="photo-viewer-header">
-          <div><p className="photo-viewer-eyebrow">Contest memories</p><h2 id={titleId}>{title}</h2></div>
-          <button className="photo-viewer-icon" type="button" aria-label="Close photo viewer" autoFocus onClick={() => dialogRef.current?.close()}><X size={22} aria-hidden="true" /></button>
+          <div><p className="photo-viewer-eyebrow">{eyebrow}</p><h2 id={titleId}>{title}</h2></div>
+          <button className="photo-viewer-icon" type="button" aria-label={`Close ${itemLabel} viewer`} autoFocus onClick={() => dialogRef.current?.close()}><X size={22} aria-hidden="true" /></button>
         </header>
 
         <figure className="photo-viewer-figure">
@@ -59,11 +65,11 @@ export function PhotoViewer({ title, photos, activeIndex, onIndexChange, onClose
         </figure>
 
         <div className="photo-viewer-controls">
-          <button className="photo-viewer-icon" type="button" disabled={activeIndex === 0} aria-label="Previous photo" onClick={() => onIndexChange(activeIndex - 1)}><ChevronLeft size={24} aria-hidden="true" /></button>
-          <div className="photo-viewer-thumbnails" role="group" aria-label="Select a contest photo" style={{ gridTemplateColumns: `repeat(${Math.min(4, photos.length)}, minmax(0, 1fr))` }}>
-            {photos.map((item, index) => <button key={item.src} type="button" aria-label={`Photo ${index + 1}: ${item.caption}`} aria-current={index === activeIndex ? 'true' : undefined} onClick={() => onIndexChange(index)}><img src={item.thumbnailSrc} width={item.width} height={item.height} alt="" /></button>)}
+          <button className="photo-viewer-icon" type="button" disabled={activeIndex === 0} aria-label={`Previous ${itemLabel}`} onClick={() => onIndexChange(activeIndex - 1)}><ChevronLeft size={24} aria-hidden="true" /></button>
+          <div className="photo-viewer-thumbnails" role="group" aria-label={groupLabel} style={{ gridTemplateColumns: `repeat(${Math.min(4, photos.length)}, minmax(0, 1fr))` }}>
+            {photos.map((item, index) => <button key={item.src} type="button" aria-label={`${itemLabel.charAt(0).toUpperCase()}${itemLabel.slice(1)} ${index + 1}: ${item.caption}`} aria-current={index === activeIndex ? 'true' : undefined} onClick={() => onIndexChange(index)}><img src={item.thumbnailSrc} width={item.width} height={item.height} alt="" /></button>)}
           </div>
-          <button className="photo-viewer-icon" type="button" disabled={activeIndex === photos.length - 1} aria-label="Next photo" onClick={() => onIndexChange(activeIndex + 1)}><ChevronRight size={24} aria-hidden="true" /></button>
+          <button className="photo-viewer-icon" type="button" disabled={activeIndex === photos.length - 1} aria-label={`Next ${itemLabel}`} onClick={() => onIndexChange(activeIndex + 1)}><ChevronRight size={24} aria-hidden="true" /></button>
         </div>
       </div>
     </dialog>, document.body,

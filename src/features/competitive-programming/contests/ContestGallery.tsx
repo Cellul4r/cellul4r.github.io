@@ -2,7 +2,7 @@ import { ArrowUpRight, Images, Maximize2 } from 'lucide-react'
 import { lazy, Suspense, useState } from 'react'
 import type { ContestPhoto } from '../../../types/portfolio'
 
-const PhotoViewer = lazy(() => import('./PhotoViewer').then((module) => ({ default: module.PhotoViewer })))
+const PhotoViewer = lazy(() => import('../../../components/PhotoViewer').then((module) => ({ default: module.PhotoViewer })))
 
 interface ContestGalleryProps {
   title: string
